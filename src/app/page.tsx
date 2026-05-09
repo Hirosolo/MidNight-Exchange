@@ -305,7 +305,7 @@ export default function Home() {
         <footer className="border-t border-zinc-800 bg-black">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-10 md:flex-row">
             <div className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-300">
-              MIDNIGHT EXCHANGE
+              MIDNIGHT STORE
             </div>
 
             <p className="max-w-xl text-center text-xs uppercase tracking-[0.15em] text-zinc-500 md:text-left">

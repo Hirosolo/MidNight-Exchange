@@ -316,7 +316,7 @@ export default function Page() {
       <footer className="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 mt-auto">
         <div className="flex flex-col md:flex-row justify-between items-center px-margin py-lg w-full max-w-[1440px] mx-auto gap-gutter">
           <div className="font-label-caps text-label-caps text-primary dark:text-primary-fixed">
-            MIDNIGHT EXCHANGE
+            MIDNIGHT STORE
           </div>
           <div className="text-on-surface-variant dark:text-on-surface-variant font-data-mono text-data-mono text-center md:text-left text-xs opacity-60">
             © 2024 MIDNIGHT COLLECTIBLE EXCHANGE. MACHINED LUXURY FOR
