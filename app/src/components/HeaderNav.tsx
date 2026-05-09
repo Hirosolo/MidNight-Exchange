@@ -8,10 +8,7 @@ import FuzzyText from "@/components/FuzzyText";
 const tabs = [
   { id: "home", label: "HOME", href: "/", kind: "hash" as const },
   { id: "products", label: "PRODUCTS", href: "/products", kind: "route" as const },
-  { id: "market", label: "MARKET", href: "#market", kind: "hash" as const },
-  { id: "vault", label: "VAULT", href: "#vault", kind: "hash" as const },
-  { id: "grading", label: "GRADING", href: "#grading", kind: "hash" as const },
-  { id: "auctions", label: "AUCTIONS", href: "#auctions", kind: "hash" as const },
+  { id: "market", label: "MARKET", href: "#market", kind: "hash" as const }
 ];
 
 export default function HeaderNav() {

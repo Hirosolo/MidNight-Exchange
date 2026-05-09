@@ -3,6 +3,7 @@
 import ProductMarketCard from "@/components/ProductMarketCard";
 import HeaderNav from "@/components/HeaderNav";
 import HeroBannerSlideshow from "@/components/HeroBannerSlideshow";
+import MarketLiveFeed from "@/components/MarketLiveFeed";
 
 export default function Home() {
   const products = [
@@ -112,33 +113,10 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="absolute bottom-8 right-8 z-20 text-primary-fixed opacity-60">
-            <span className="material-symbols-outlined text-4xl">
-              auto_awesome
-            </span>
-          </div>
         </section>
 
         {/* PRODUCT GRID */}
-        <section
-          id="market"
-          className="max-w-[1440px] mx-auto px-margin py-xl"
-        >
-          <div className="flex justify-between items-end mb-lg border-b border-outline-variant/30 pb-md">
-            <h2 className="font-headline-md text-headline-md text-primary tracking-tight">
-              MARKET LIVE FEED
-            </h2>
-            <div className="font-data-mono text-data-mono text-primary-fixed flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
-              SYNCED: 0.02ms
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {products.map((product) => (
-              <ProductMarketCard key={product.id} product={product} />
-            ))}
-          </div>
-        </section>
+        <MarketLiveFeed />
 
         {/* AUTHENTICATED ASSET PROTOCOL */}
         <section className="max-w-[1440px] mx-auto px-margin py-xl">
