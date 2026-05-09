@@ -67,6 +67,7 @@ export default function MarketLiveFeed() {
             rarityColor={product.rarityColor}
             grade={product.grade}
             gradeNumber={product.gradeNumber}
+            href="/products/details"
           />
         ))}
       </div>

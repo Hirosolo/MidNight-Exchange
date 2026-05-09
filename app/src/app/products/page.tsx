@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 const products = [
@@ -69,6 +70,17 @@ const products = [
   },
 ];
 
+interface ProductCardProps {
+  name: string;
+  serial: string;
+  price: string;
+  image: string;
+  rarity: string;
+  rarityColor: string;
+  grade: string;
+  gradeNumber: string;
+}
+
 function ProductCard({
   name,
   serial,
@@ -78,9 +90,12 @@ function ProductCard({
   rarityColor,
   grade,
   gradeNumber,
-}: any) {
+}: ProductCardProps) {
   return (
-    <div className="group relative overflow-hidden border border-white/20 bg-[#161618] p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40">
+    <Link
+      href="/products/details"
+      className="group relative block overflow-hidden border border-white/20 bg-[#161618] p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40"
+    >
       <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 bg-cyan-400/5" />
         <div className="absolute right-0 top-0 h-40 w-40 bg-cyan-400/10 blur-3xl" />
@@ -148,7 +163,7 @@ function ProductCard({
           <p className="mt-1 font-mono text-sm text-cyan-300">{price}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

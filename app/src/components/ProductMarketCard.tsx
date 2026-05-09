@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 interface ProductMarketCardProps {
@@ -9,6 +10,7 @@ interface ProductMarketCardProps {
   rarityColor?: "cyan" | "purple";
   grade: string;
   gradeNumber: string;
+  href?: string;
 }
 
 export default function ProductMarketCard({
@@ -20,9 +22,15 @@ export default function ProductMarketCard({
   rarityColor = "cyan",
   grade,
   gradeNumber,
+  href = "/products/details",
 }: ProductMarketCardProps) {
+  const CardShell = href ? Link : "div";
+
   return (
-    <div className="group relative overflow-hidden border border-white/20 bg-[#161618] p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40">
+    <CardShell
+      href={href}
+      className="group relative block overflow-hidden border border-white/20 bg-[#161618] p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40"
+    >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 bg-cyan-400/5" />
         <div className="absolute right-0 top-0 h-40 w-40 bg-cyan-400/10 blur-3xl" />
@@ -96,6 +104,6 @@ export default function ProductMarketCard({
           </p>
         </div>
       </div>
-    </div>
+    </CardShell>
   );
 }
