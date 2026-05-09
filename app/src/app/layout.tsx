@@ -5,6 +5,7 @@ import {
   Space_Grotesk,
   JetBrains_Mono,
 } from "next/font/google";
+import HeaderNav from "@/components/HeaderNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,6 +53,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-on-surface antialiased">
+        <HeaderNav />
         {children}
       </body>
     </html>

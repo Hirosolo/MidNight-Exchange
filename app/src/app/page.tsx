@@ -1,7 +1,6 @@
 "use client";
 
 import ProductMarketCard from "@/components/ProductMarketCard";
-import HeaderNav from "@/components/HeaderNav";
 import HeroBannerSlideshow from "@/components/HeroBannerSlideshow";
 import MarketLiveFeed from "@/components/MarketLiveFeed";
 
@@ -71,8 +70,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-surface">
-      <HeaderNav />
-
       <main className="flex-grow pt-[80px]">
         {/* HERO SECTION */}
         <section

@@ -6,39 +6,29 @@ import Link from "next/link";
 import FuzzyText from "@/components/FuzzyText";
 
 const tabs = [
-  { id: "home", label: "HOME", href: "/", kind: "hash" as const },
+  { id: "home", label: "HOME", href: "/", kind: "route" as const },
   { id: "products", label: "PRODUCTS", href: "/products", kind: "route" as const },
-  { id: "market", label: "MARKET", href: "#market", kind: "hash" as const }
+  { id: "market", label: "MARKET", href: "/#market", kind: "route" as const },
 ];
 
 export default function HeaderNav() {
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeHash, setActiveHash] = useState("");
   const navRef = useRef<HTMLElement | null>(null);
   const indicatorRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    const updateFromHash = () => {
-      if (pathname === "/products") {
-        setActiveTab("products");
-        return;
-      }
-
-      const hash = window.location.hash.replace("#", "");
-      setActiveTab(hash || "home");
+    const updateHash = () => {
+      setActiveHash(window.location.hash.replace("#", ""));
     };
 
-    updateFromHash();
-    window.addEventListener("hashchange", updateFromHash);
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
 
-    return () => window.removeEventListener("hashchange", updateFromHash);
-  }, [pathname]);
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, []);
 
-  useEffect(() => {
-    if (pathname === "/products") {
-      setActiveTab("products");
-    }
-  }, [pathname]);
+  const activeTab = pathname === "/products" ? "products" : activeHash === "market" ? "market" : "home";
 
   useEffect(() => {
     const updateIndicator = () => {
@@ -104,7 +94,6 @@ export default function HeaderNav() {
                   data-tab={tab.id}
                   className={tabClassName}
                   href={tab.href}
-                  onClick={() => setActiveTab(tab.id)}
                 >
                   {tab.label}
                 </a>
