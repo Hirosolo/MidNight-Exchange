@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+:root {
+  --background: #080809;
+  --foreground: #e5e2e3;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-space-grotesk);
+  --font-data: var(--font-jetbrains-mono);
+}
+
+body {
+  background-color: #080809;
+  color: #e5e2e3;
+  line-height: 1.6;
+  letter-spacing: 0.012em;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+}
+
+p {
+  line-height: 1.75;
+}
+
+.text-flow > * + * {
+  margin-top: clamp(0.6rem, 1.2vw, 1.1rem);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 12px -2px #00fbfb;
+}
+
+.rim-light {
+  box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.chrome-border {
+  border: 2px solid;
+  border-image: linear-gradient(to bottom right, #e2e8f0, #4a4e57) 1;
+}
+
+.cyber-purple-bg {
+  background-color: rgba(182, 0, 248, 0.1);
+}
+
+.machined-edge {
+  background: linear-gradient(135deg, #4a4e57 0%, #e2e8f0 50%, #4a4e57 100%);
+}
+
+.glass-overlay {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+}
+
+.rim-light-top {
+  border-top: 1px solid rgba(226, 232, 240, 0.3);
+  border-left: 1px solid rgba(226, 232, 240, 0.3);
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-up {
+  opacity: 0;
+  animation: revealUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-delay-1 {
+  animation-delay: 120ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 240ms;
+}
+
+.reveal-delay-3 {
+  animation-delay: 360ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-delay-1,
+  .reveal-delay-2,
+  .reveal-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
