@@ -2,6 +2,7 @@
 
 import ProductMarketCard from "@/components/ProductMarketCard";
 import HeaderNav from "@/components/HeaderNav";
+import HeroBannerSlideshow from "@/components/HeroBannerSlideshow";
 
 export default function Home() {
   const products = [
@@ -77,14 +78,7 @@ export default function Home() {
           id="home"
           className="relative w-full h-[calc(100vh-80px)] min-h-[760px] flex items-center justify-center overflow-hidden"
         >
-          <div className="absolute inset-0 z-0">
-            <img
-              alt="New Essentials Drop"
-              className="w-full h-full object-cover object-center scale-x-[1.84] scale-y-[1.495]"
-              src="/images/hero-banner.png"
-            />
-            <div className="absolute inset-0 bg-black/40"></div>
-          </div>
+          <HeroBannerSlideshow />
           <div className="relative z-10 w-full max-w-[1440px] px-margin flex flex-col items-center text-center space-y-lg -translate-y-14 md:-translate-y-20">
             <div className="flex flex-col items-center space-y-md reveal-up reveal-delay-1">
               <div className="flex items-center gap-base flex-wrap justify-center">

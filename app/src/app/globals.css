@@ -70,6 +70,64 @@ p {
   border-left: 1px solid rgba(226, 232, 240, 0.3);
 }
 
+.hero-banner-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-banner-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scaleX(1.84) scaleY(1.495);
+  transition: opacity 260ms ease, filter 260ms ease, transform 600ms ease;
+  will-change: transform, opacity, filter;
+}
+
+.hero-banner-image--glitching {
+  filter: saturate(1.25) contrast(1.15) brightness(0.95);
+  animation: heroBannerJitter 650ms steps(2, end) infinite;
+}
+
+.hero-banner-image--glitch-layer {
+  mix-blend-mode: screen;
+  opacity: 0.88;
+  filter: saturate(1.7) contrast(1.35) brightness(1.1);
+  animation: heroBannerJitter 650ms steps(2, end) infinite;
+}
+
+.hero-banner-image--glitch-layer-top {
+  clip-path: inset(0 0 66% 0);
+  transform: scaleX(1.84) scaleY(1.495) translate3d(-14px, -2px, 0);
+}
+
+.hero-banner-image--glitch-layer-mid {
+  clip-path: inset(32% 0 32% 0);
+  transform: scaleX(1.84) scaleY(1.495) translate3d(10px, 0, 0);
+  animation-delay: 60ms;
+}
+
+.hero-banner-image--glitch-layer-bottom {
+  clip-path: inset(66% 0 0 0);
+  transform: scaleX(1.84) scaleY(1.495) translate3d(-8px, 2px, 0);
+  animation-delay: 120ms;
+}
+
+.hero-banner-glitch-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%),
+    repeating-linear-gradient(0deg, rgba(0, 251, 251, 0.18) 0 2px, transparent 2px 6px);
+  mix-blend-mode: overlay;
+  opacity: 0.22;
+  animation: heroBannerNoise 420ms linear infinite;
+}
+
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: normal;
@@ -120,6 +178,44 @@ p {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .hero-banner-image,
+  .hero-banner-image--glitching,
+  .hero-banner-image--glitch-layer,
+  .hero-banner-glitch-noise {
+    animation: none;
+    transition: none;
+  }
+}
+
+@keyframes heroBannerJitter {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40% {
+    transform: translate3d(3px, -1px, 0);
+  }
+  60% {
+    transform: translate3d(-4px, 1px, 0);
+  }
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroBannerNoise {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(12px);
   }
 }
 
