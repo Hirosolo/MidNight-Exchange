@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -168,6 +171,59 @@ function ProductCard({
 }
 
 function FilterSidebar() {
+  const [showAllCategories, setShowAllCategories] = useState(false);
+  const [categoriesClicked, setCategoriesClicked] = useState(false);
+  const [showAllBrands, setShowAllBrands] = useState(false);
+  const [brandsClicked, setBrandsClicked] = useState(false);
+
+  const categories = ["Accessories", "Clothing", "Footwear", "Home Decor", "Sale"];
+
+  const brandsGroups = [
+    {
+      title: "Business",
+      items: [
+        "Budweiser","Chevrolet","Coca-Cola","Ducati","Grey Goose","Guinness","Harley-Davidson","Indian Motorcycle","Jack Daniel's","Jeep","Marlboro","Monster Energy","Starbucks","The Famous Grouse","The Kraken",
+      ],
+    },
+    {
+      title: "Culture",
+      items: [
+        "Alpha Kappa Alpha","America","Bob Kevoian","Calvin and Hobbes","Captain Morgan","Father's Day","Independence Hall","Mother's Day","Peanuts","Route 66","Royal Navy","Smokey Bear","US Marine Corps","US Navy","USA","Veteran Day",
+      ],
+    },
+    {
+      title: "K-Pop",
+      items: ["Aespa","BTS","G-Dragon"],
+    },
+    {
+      title: "Movie",
+      items: [
+        "Avatar","Batman","Dragon Ball","Godzilla","Harry Potter","James Bond 007","Marty Supreme","Naruto","One Piece","Peanut","Pokémon","Scream","Star Trek","Star Wars","Stranger Things","The Lord of the Rings","The Muppet Show","The Simpsons","Top Gun","Winnie the Pooh","Zootopia",
+      ],
+    },
+    {
+      title: "Music",
+      items: [
+        "Bruce Springsteen","Clint Black","Dolly Parton","Elvis Presley","Freddie Mercury","Jimmy Buffett","Kenny Chesney","Michael Jackson","Prince","Rock the Country","Westlife","Willie Nelson",
+      ],
+    },
+    {
+      title: "Other",
+      items: ["DC","Friday The 13th","La La Land","Marvel","Mission Impossible","Pirates of the Caribbean","Taxi Driver","The Texas Chainsaw Massacre"],
+    },
+    {
+      title: "Rock Band",
+      items: [
+        "AC/DC","Aerosmith","Black Stone Cherry","Guns N' Roses","Iron Maiden","KISS","Led Zeppelin","Megadeth","Metallica","Pink Floyd","Queen","RUSH","Sleep Token","The Beatles","The Eagles","The Rolling Stones","Thirty Seconds to Mars","Van Halen","Wu-Tang Clan",
+      ],
+    },
+    { title: "Sport", items: ["MLB","NBA","NCAA","NFL","NHL","Other Sport","Soccer"] },
+    { title: "Tabletop", items: ["Dungeons & Dragons"] },
+    { title: "Video Game", items: ["Fallout","Sonic The Hedgehog","World of Warcraft","Zelda"] },
+  ];
+
+  const flattenedBrands = brandsGroups.flatMap((g) => g.items);
+
   return (
     <aside className="sticky top-24 hidden h-fit w-[280px] flex-col gap-6 lg:flex">
       <div className="border border-cyan-400/20 bg-zinc-950/60 p-6 backdrop-blur">
@@ -180,13 +236,18 @@ function FilterSidebar() {
         </div>
 
         <div className="space-y-6">
-          <div>
+          <div
+            onMouseEnter={() => setShowAllCategories(true)}
+            onMouseLeave={() => {
+              if (!categoriesClicked) setShowAllCategories(false);
+            }}
+          >
             <p className="mb-3 font-mono text-xs uppercase tracking-widest text-zinc-500">
               Category
             </p>
 
             <div className="space-y-2">
-              {["Outerwear", "Accessories", "Footwear", "Techwear"].map((item) => (
+              {(showAllCategories ? categories : categories.slice(0, 4)).map((item) => (
                 <label key={item} className="flex items-center gap-3 text-sm text-zinc-300">
                   <input
                     type="checkbox"
@@ -196,16 +257,45 @@ function FilterSidebar() {
                   {item}
                 </label>
               ))}
+
+              {!showAllCategories && categories.length > 4 && (
+                <button
+                  onClick={() => {
+                    setShowAllCategories(true);
+                    setCategoriesClicked(true);
+                  }}
+                  className="mt-2 text-sm text-cyan-300 underline"
+                >
+                  Show all categories
+                </button>
+              )}
+
+              {showAllCategories && (
+                <button
+                  onClick={() => {
+                    setShowAllCategories(false);
+                    setCategoriesClicked(false);
+                  }}
+                  className="mt-2 text-sm text-zinc-400 underline"
+                >
+                  Collapse
+                </button>
+              )}
             </div>
           </div>
 
-          <div>
+          <div
+            onMouseEnter={() => setShowAllBrands(true)}
+            onMouseLeave={() => {
+              if (!brandsClicked) setShowAllBrands(false);
+            }}
+          >
             <p className="mb-3 font-mono text-xs uppercase tracking-widest text-zinc-500">
-              Grade
+              Brand
             </p>
 
             <div className="space-y-2">
-              {["Gem Mint 10", "Mint 9", "Near Mint 8"].map((item) => (
+              {(!showAllBrands ? flattenedBrands.slice(0, 8) : flattenedBrands).map((item) => (
                 <label key={item} className="flex items-center gap-3 text-sm text-zinc-300">
                   <input
                     type="checkbox"
@@ -215,6 +305,46 @@ function FilterSidebar() {
                   {item}
                 </label>
               ))}
+
+              {!showAllBrands && flattenedBrands.length > 8 && (
+                <button
+                  onClick={() => {
+                    setShowAllBrands(true);
+                    setBrandsClicked(true);
+                  }}
+                  className="mt-2 text-sm text-cyan-300 underline"
+                >
+                  Show all brands
+                </button>
+              )}
+
+              {showAllBrands && (
+                <div className="mt-3 space-y-4 border-t border-white/5 pt-4">
+                  {brandsGroups.map((group) => (
+                    <div key={group.title}>
+                      <div className="mb-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500">{group.title}</div>
+                      <div className="grid gap-2">
+                        {group.items.map((b) => (
+                          <label key={b} className="flex items-center gap-3 text-sm text-zinc-300">
+                            <input type="checkbox" className="h-4 w-4 border-zinc-700 bg-black accent-cyan-400" />
+                            {b}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+
+                  <button
+                    onClick={() => {
+                      setShowAllBrands(false);
+                      setBrandsClicked(false);
+                    }}
+                    className="mt-2 text-sm text-zinc-400 underline"
+                  >
+                    Collapse brands
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
