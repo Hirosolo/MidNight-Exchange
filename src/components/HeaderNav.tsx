@@ -17,6 +17,7 @@ const tabs = [
 export default function HeaderNav() {
   const [activeHash, setActiveHash] = useState("");
   const [hoverTab, setHoverTab] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -108,6 +109,27 @@ export default function HeaderNav() {
             );
           })}
         </nav>
+
+        {/* Search Bar */}
+        <div className="ml-auto flex items-center">
+          <div className="relative group">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="px-4 py-2 rounded border border-cyan-300/30 bg-zinc-900/50 text-sm text-zinc-100 placeholder-zinc-500 transition-all duration-300 focus:outline-none focus:border-cyan-300/60 focus:bg-zinc-900/70 focus:shadow-[0_0_8px_rgba(0,255,255,0.2)] hover:border-cyan-300/50"
+            />
+            <svg
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 group-hover:text-cyan-300/70 transition-colors pointer-events-none"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
 
         {/* Hover dropdown (categories / brands) */}
         <div

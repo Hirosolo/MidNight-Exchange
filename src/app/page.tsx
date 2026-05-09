@@ -56,7 +56,7 @@ export default function Home() {
                 I[WADE] Drop Set - 001/300, Multi-color]
               </span>
             </div>
-            <h1 className="font-display-lg text-[52px] md:text-[68px] text-white leading-[1.08] tracking-tighter text-flow reveal-up reveal-delay-2">
+            <h1 className="font-display-lg text-[52px] md:text-[68px] text-white leading-[1.08] tracking-tighter text-flow reveal-up reveal-delay-2 animate-glitch-hero">
               THE NEW ESSENTIALS DROP IS HERE
             </h1>
             <p className="font-body-base text-[14px] md:text-[16px] text-white/90 max-w-2xl mx-auto tracking-[0.02em] reveal-up reveal-delay-3">
