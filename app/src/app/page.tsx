@@ -115,37 +115,42 @@ export default function Home() {
         {/* PRODUCT GRID */}
         <MarketLiveFeed />
 
+        {/* ========================================= */}
         {/* AUTHENTICATED ASSET PROTOCOL */}
-        <section className="max-w-[1440px] mx-auto px-margin py-xl">
-          <h2 className="font-headline-md text-headline-md text-primary tracking-tight mb-lg text-center">
+        {/* ========================================= */}
+
+        <section className="mx-auto max-w-7xl px-6 py-28">
+          <h2 className="mb-14 text-center text-3xl font-bold tracking-tight text-white">
             AUTHENTICATED ASSET PROTOCOL
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-gradient-to-br from-primary-fixed/20 to-transparent p-px rounded-xl overflow-hidden">
-            {featureTiles.map((tile, index) => (
+
+          <div className="grid gap-px overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-400/20 to-transparent p-px md:grid-cols-2">
+            {featureTiles.map((item, i) => (
               <div
-                key={index}
-                className={`bg-surface-container p-xl flex flex-col gap-md rim-light ${
-                  tile.image ? "relative overflow-hidden group" : ""
-                }`}
+                key={i}
+                className="group relative overflow-hidden bg-zinc-950 p-10"
               >
-                {tile.image && (
+                {item.image && (
                   <img
-                    alt={tile.title}
-                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-500 mix-blend-luminosity"
-                    src={tile.image}
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 h-full w-full object-cover opacity-10 transition duration-500 group-hover:opacity-30"
                   />
                 )}
-                <div className={tile.image ? "relative z-10" : ""}>
-                  <div className="text-primary-fixed w-12 h-12 flex items-center justify-center border border-primary-fixed/30 rounded-lg bg-surface">
-                    <span className="material-symbols-outlined text-3xl">
-                      {tile.icon}
+
+                <div className="relative z-10">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/30 bg-black/40 backdrop-blur">
+                    <span className="material-symbols-outlined text-[28px] text-cyan-300">
+                      {item.icon}
                     </span>
                   </div>
-                  <h3 className="font-headline-md text-[20px] text-primary mt-md">
-                    {tile.title}
+
+                  <h3 className="mb-4 text-xl font-bold tracking-wide text-white">
+                    {item.title}
                   </h3>
-                  <p className="font-data-mono text-data-mono text-on-surface-variant leading-relaxed mt-md">
-                    {tile.description}
+
+                  <p className="max-w-lg text-sm leading-7 text-zinc-400">
+                    {item.description}
                   </p>
                 </div>
               </div>
@@ -153,169 +158,192 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ========================================= */}
         {/* COMMUNITY VERIFIED DROPS */}
-        <section className="py-xl overflow-hidden border-y border-outline-variant/20 bg-surface/50">
-          <div className="flex whitespace-nowrap opacity-60 mb-lg">
-            <div className="font-data-mono text-data-mono text-primary-fixed flex items-center gap-8 px-4 animate-slide">
-              <span>&gt; USER 0x7A... BOUGHT VOID-TEE</span>
+        {/* ========================================= */}
+
+        <section className="overflow-hidden border-y border-zinc-800 bg-zinc-950/60 py-24">
+          {/* ticker */}
+
+          <div className="mb-14 whitespace-nowrap overflow-hidden">
+            <div className="animate-marquee flex w-max gap-8 text-sm uppercase tracking-[0.3em] text-cyan-300/70">
+              <span>{">"} USER 0x7A... BOUGHT VOID-TEE</span>
               <span>|</span>
-              <span>&gt; VAULT DEPOSIT: CHRONO-SNKRS #001</span>
+              <span>{">"} VAULT DEPOSIT: CHRONO-SNKRS #001</span>
               <span>|</span>
-              <span>&gt; GRADE CONFIRMED: MINT 9.5</span>
+              <span>{">"} GRADE CONFIRMED: MINT 9.5</span>
               <span>|</span>
-              <span>&gt; TRANSFER COMPLETE: BLOCK #882190</span>
+              <span>{">"} TRANSFER COMPLETE: BLOCK #882190</span>
               <span>|</span>
-              <span>&gt; USER 0x2B... LISTED GHOST CAP</span>
+              <span>{">"} USER 0x2B... LISTED GHOST CAP</span>
               <span>|</span>
-              <span>&gt; USER 0x7A... BOUGHT VOID-TEE</span>
+              <span>{">"} USER 0x7A... BOUGHT VOID-TEE</span>
               <span>|</span>
-              <span>&gt; VAULT DEPOSIT: CHRONO-SNKRS #001</span>
+              <span>{">"} VAULT DEPOSIT: CHRONO-SNKRS #001</span>
             </div>
           </div>
-          <div className="max-w-[1440px] mx-auto px-margin">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-              <div className="relative rounded-lg overflow-hidden group">
-                <img
-                  alt="TOKYO SECTOR 4"
-                  className="w-full h-64 object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                  src="/images/a_masonry_grid_of_3_4_high_quality_moody_lifestyle_photos_of_people_wearing/screen.png"
-                />
-                <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="font-data-mono text-[10px] text-primary-fixed">
-                    TOKYO SECTOR 4
-                  </span>
-                </div>
-              </div>
 
-              <div className="bg-surface-container rounded-lg p-md rim-light flex flex-col justify-between gap-sm">
-                <span className="font-data-mono text-outline-variant">
-                  SYSTEM LOG
-                </span>
-                <div className="font-headline-md text-primary leading-relaxed tracking-[0.01em]">
-                  &quot;The fit is exact. Materials are unlike anything
-                  else.&quot;
-                </div>
-                <span className="font-data-mono text-xs text-primary-fixed">
-                  @NEO_RUNNER
-                </span>
-              </div>
+          {/* masonry */}
 
-              <div className="bg-surface-container rounded-lg flex items-center justify-center border border-outline-variant/30">
-                <span className="material-symbols-outlined text-4xl text-outline-variant">
-                  sensors
-                </span>
+          <div className="mx-auto columns-1 gap-6 space-y-6 px-6 md:columns-2 lg:max-w-7xl lg:columns-3">
+            <div className="break-inside-avoid overflow-hidden rounded-3xl">
+              <img
+                src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop"
+                className="w-full object-cover transition duration-500 hover:scale-105"
+                alt=""
+              />
+            </div>
+
+            <div className="break-inside-avoid rounded-3xl border border-zinc-800 bg-zinc-900 p-8">
+              <span className="text-xs uppercase tracking-[0.3em] text-zinc-500">
+                SYSTEM LOG
+              </span>
+
+              <p className="mt-8 text-2xl font-semibold leading-relaxed text-white">
+                “The fit is exact. Materials are unlike anything else.”
+              </p>
+
+              <div className="mt-10 text-sm tracking-[0.2em] text-cyan-300">
+                @NEO_RUNNER
               </div>
+            </div>
+
+            <div className="break-inside-avoid flex aspect-video items-center justify-center rounded-3xl border border-zinc-800 bg-zinc-900">
+              <div className="text-6xl text-zinc-700">◈</div>
             </div>
           </div>
         </section>
 
+        {/* ========================================= */}
         {/* DESIGN INNOVATION */}
-        <section className="max-w-[1440px] mx-auto px-margin py-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 bg-surface-container rounded-xl overflow-hidden rim-light border border-outline-variant/20">
-            <div className="h-full min-h-[400px] relative">
+        {/* ========================================= */}
+
+        <section className="mx-auto max-w-7xl px-6 py-28">
+          <div className="grid overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950 md:grid-cols-2">
+            <div className="relative min-h-[500px]">
               <img
-                alt="CHRONO WEAVE"
-                className="absolute inset-0 w-full h-full object-cover"
-                src="/images/a_macro_close_up_photograph_of_a_high_tech_woven_fabric_texture_with_a/screen.png"
+                src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop"
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
-            <div className="p-xl flex flex-col justify-center space-y-lg bg-background/50 backdrop-blur-md">
-              <div>
-                <h2 className="font-headline-md text-[32px] text-primary mb-2">
+
+            <div className="flex flex-col justify-center bg-black/50 p-12 backdrop-blur">
+              <div className="mb-10">
+                <h2 className="mb-4 text-4xl font-bold tracking-tight text-white">
                   CHRONO WEAVE
                 </h2>
-                <span className="cyber-purple-bg text-secondary-container border border-secondary-container px-2 py-1 font-label-caps text-label-caps rounded-sm inline-block">
+
+                <span className="rounded-md border border-fuchsia-500/40 bg-fuchsia-500/10 px-3 py-1 text-xs font-bold tracking-[0.3em] text-fuchsia-300">
                   MATERIAL SPEC
                 </span>
               </div>
-              <div className="font-data-mono text-data-mono text-on-surface-variant space-y-4 border-l-2 border-primary-fixed/30 pl-md">
-                <p>&gt; COMPOSITION: 80% SYNTH-POLY / 20% TITANIUM THREAD</p>
-                <p>&gt; TENSILE STRENGTH: 1200 MPa</p>
-                <p>&gt; THERMAL RESISTANCE: UP TO 400°C</p>
-                <p>&gt; OPTICAL PROPERTIES: LIGHT ABSORBING, LOW-REFLECTANCE</p>
-                <p className="text-primary-fixed mt-4 pt-4 border-t border-outline-variant/20">
-                  &gt; STATUS: PRODUCTION READY
+
+              <div className="space-y-5 border-l border-cyan-500/30 pl-6 font-mono text-sm text-zinc-400">
+                <p>
+                  {">"} COMPOSITION: 80% SYNTH-POLY / 20% TITANIUM THREAD
+                </p>
+
+                <p>{">"} TENSILE STRENGTH: 1200 MPa</p>
+
+                <p>{">"} THERMAL RESISTANCE: UP TO 400°C</p>
+
+                <p>{">"} OPTICAL: LIGHT ABSORBING / LOW-REFLECTANCE</p>
+
+                <p className="border-t border-zinc-800 pt-6 text-cyan-300">
+                  {">"} STATUS: PRODUCTION READY
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* ========================================= */}
         {/* FINAL CTA */}
-        <section className="max-w-[1024px] mx-auto px-margin py-24 text-center flex flex-col items-center">
-          <h2 className="font-display-lg text-display-lg text-primary mb-lg reveal-up">
-            RESERVE YOUR ALLOCATED SUPPLY
+        {/* ========================================= */}
+
+        <section className="mx-auto flex max-w-5xl flex-col items-center px-6 py-32 text-center">
+          <h2 className="max-w-4xl text-5xl font-black uppercase tracking-tight text-white md:text-7xl">
+            Reserve Your Allocated Supply
           </h2>
-          <div className="relative w-48 h-48 mb-lg mx-auto">
-            <div className="absolute inset-0 rounded-full bg-primary-fixed/20 blur-3xl mix-blend-screen"></div>
+
+          <div className="relative my-16 h-56 w-56">
+            <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-3xl" />
+
             <img
-              alt="Collectible Token"
-              className="relative z-10 object-contain w-full h-full drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)]"
-              src="/images/a_professional_cinematic_shot_of_a_physical_metallic_token_or_medallion/screen.png"
+              src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1000&auto=format&fit=crop"
+              alt=""
+              className="relative z-10 h-full w-full object-contain drop-shadow-2xl"
             />
           </div>
-          <div className="font-headline-md text-[32px] text-on-surface mb-md">
-            $1,200
-            <span className="text-outline-variant text-xl">
-              {" "}
+
+          <div className="mb-8 text-5xl font-bold text-white">
+            $1,200{" "}
+            <span className="text-xl font-medium text-zinc-500">
               (Reservation Fee)
             </span>
           </div>
-          <button className="bg-primary-container text-on-primary-container font-label-caps text-[16px] font-bold tracking-widest px-16 py-6 rounded-sm hover:glow-cyan transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4=')] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-            <span className="relative z-10 flex items-center">
-              RESERVE NOW
-              <span className="material-symbols-outlined ml-2">
+
+          <button className="group relative overflow-hidden rounded-xl border border-cyan-400/30 bg-cyan-300 px-14 py-6 text-sm font-black uppercase tracking-[0.3em] text-black transition hover:shadow-[0_0_50px_rgba(34,211,238,0.4)]">
+            <span className="relative z-10 flex items-center gap-3">
+              Reserve Now
+              <span className="material-symbols-outlined text-[20px] transition group-hover:translate-x-1">
                 arrow_forward
               </span>
             </span>
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-white/50"></div>
+
+            <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
+              <div className="absolute inset-0 bg-white/20" />
+            </div>
           </button>
-          <p className="font-data-mono text-xs text-outline-variant mt-8 max-w-sm">
-            * RESERVATION GRANTS EXCLUSIVE ACCESS TO THE VAULTED INVENTORY.
-            NON-REFUNDABLE.
+
+          <p className="mt-10 max-w-md text-xs uppercase tracking-[0.2em] text-zinc-600">
+            * Reservation grants exclusive access to the vaulted inventory.
+            Non-refundable.
           </p>
         </section>
-      </main>
 
-      {/* FOOTER */}
-      <footer className="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 mt-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center px-margin py-lg w-full max-w-[1440px] mx-auto gap-gutter">
-          <div className="font-label-caps text-label-caps text-primary dark:text-primary-fixed">
-            MIDNIGHT EXCHANGE
+        {/* ========================================= */}
+        {/* FOOTER */}
+        {/* ========================================= */}
+
+        <footer className="border-t border-zinc-800 bg-black">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-10 md:flex-row">
+            <div className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-300">
+              MIDNIGHT EXCHANGE
+            </div>
+
+            <p className="max-w-xl text-center text-xs uppercase tracking-[0.15em] text-zinc-500 md:text-left">
+              © 2026 Midnight Collectible Exchange. Machined luxury for
+              high-stakes collectors.
+            </p>
+
+            <div className="flex gap-6 text-xs uppercase tracking-[0.25em] text-zinc-400">
+              <a href="#" className="transition hover:text-cyan-300">
+                Terminal
+              </a>
+
+              <a href="#" className="transition hover:text-cyan-300">
+                Protocol
+              </a>
+
+              <a href="#" className="transition hover:text-cyan-300">
+                Security
+              </a>
+
+              <a href="#" className="transition hover:text-cyan-300">
+                Support
+              </a>
+            </div>
           </div>
-          <div className="text-on-surface-variant dark:text-on-surface-variant font-data-mono text-data-mono text-center md:text-left text-xs opacity-60">
-            © 2024 MIDNIGHT COLLECTIBLE EXCHANGE. MACHINED LUXURY FOR
-            HIGH-STAKES COLLECTORS.
-          </div>
-          <nav className="flex gap-md">
-            <a
-              className="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200"
-              href="#"
-            >
-              TERMINAL
-            </a>
-            <a
-              className="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200"
-              href="#"
-            >
-              PROTOCOL
-            </a>
-            <a
-              className="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200"
-              href="#"
-            >
-              SECURITY
-            </a>
-            <a
-              className="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200"
-              href="#"
-            >
-              SUPPORT
-            </a>
-          </nav>
-        </div>
-      </footer>
+        </footer>
+
+        {/* ========================================= */}
+        {/* LOCAL CSS */}
+        {/* ========================================= */}
+
+        <style jsx global>{`\n          @keyframes marquee {\n            0% {\n              transform: translateX(0%);\n            }\n\n            100% {\n              transform: translateX(-50%);\n            }\n          }\n\n          .animate-marquee {\n            animation: marquee 20s linear infinite;\n          }\n        `}</style>
+      </main>
     </div>
   );
 }
