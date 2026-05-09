@@ -29,7 +29,7 @@ export default function ProductMarketCard({
   return (
     <CardShell
       href={href}
-      className="group relative block overflow-hidden border border-white/20 bg-[#161618] p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40"
+      className="group relative block overflow-hidden border border-white/20 bg-[#161618] p-[8px] md:p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40"
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 bg-cyan-400/5" />
@@ -43,20 +43,20 @@ export default function ProductMarketCard({
         />
       </div>
 
-      <div className="mb-2 bg-gradient-to-r from-zinc-500 via-zinc-200 to-zinc-500 p-[2px]">
-        <div className="flex items-center justify-between bg-zinc-100 px-3 py-2">
-          <div className="font-mono text-[9px] font-bold leading-tight text-black">
+      <div className="mb-2 bg-gradient-to-r from-zinc-500 via-zinc-200 to-zinc-500 p-[1.5px] md:p-[2px]">
+        <div className="flex items-center justify-between bg-zinc-100 px-2 md:px-3 py-1.5 md:py-2">
+          <div className="font-mono text-[7px] md:text-[9px] font-bold leading-tight text-black">
             MIDNIGHT
             <br />
             EXCHANGE
           </div>
 
           <div className="text-center text-black">
-            <div className="font-mono text-[10px] font-extrabold uppercase">
+            <div className="font-mono text-[8px] md:text-[10px] font-extrabold uppercase">
               {grade}
             </div>
 
-            <div className="-mt-1 text-2xl font-black">
+            <div className="-mt-0.5 md:-mt-1 text-xl md:text-2xl font-black">
               {gradeNumber}
             </div>
           </div>
@@ -73,9 +73,9 @@ export default function ProductMarketCard({
 
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
 
-        <div className="absolute bottom-5 left-5 z-10">
+        <div className="absolute bottom-3 md:bottom-5 left-3 md:left-5 z-10">
           <span
-            className={`mb-2 inline-flex border px-2 py-1 font-mono text-[9px] uppercase tracking-widest ${
+            className={`mb-1.5 md:mb-2 inline-flex border px-1.5 md:px-2 py-0.5 md:py-1 font-mono text-[7px] md:text-[9px] uppercase tracking-widest ${
               rarityColor === "purple"
                 ? "border-fuchsia-400 bg-fuchsia-400/10 text-fuchsia-300"
                 : "border-cyan-400 bg-cyan-400/10 text-cyan-300"
@@ -84,29 +84,29 @@ export default function ProductMarketCard({
             {rarity}
           </span>
 
-          <h3 className="max-w-[220px] text-2xl font-bold uppercase leading-none tracking-tight text-white">
+          <h3 className="max-w-[160px] md:max-w-[220px] text-lg md:text-2xl font-bold uppercase leading-none tracking-tight text-white">
             {name}
           </h3>
         </div>
       </div>
 
-      <div className="mt-2 flex items-end justify-between border-t border-white/10 bg-white/[0.03] p-4">
+      <div className="mt-1.5 md:mt-2 flex items-end justify-between border-t border-white/10 bg-white/[0.03] p-2 md:p-4">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+          <p className="font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-zinc-500">
             Serial
           </p>
 
-          <p className="mt-1 font-mono text-sm text-white">
+          <p className="mt-0.5 md:mt-1 font-mono text-xs md:text-sm text-white">
             {serial}
           </p>
         </div>
 
         <div className="text-right">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+          <p className="font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-zinc-500">
             Price
           </p>
 
-          <p className="mt-1 font-mono text-sm text-cyan-300">
+          <p className="mt-0.5 md:mt-1 font-mono text-xs md:text-sm text-cyan-300">
             {price}
           </p>
         </div>

@@ -97,27 +97,27 @@ function ProductCard({
   return (
     <Link
       href="/products/details"
-      className="group relative block overflow-hidden border border-white/20 bg-[#161618] p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40"
+      className="group relative block overflow-hidden border border-white/20 bg-[#161618] p-[8px] md:p-[10px] shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/40"
     >
       <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 bg-cyan-400/5" />
         <div className="absolute right-0 top-0 h-40 w-40 bg-cyan-400/10 blur-3xl" />
       </div>
 
-      <div className="mb-2 bg-gradient-to-r from-zinc-500 via-zinc-200 to-zinc-500 p-[2px]">
-        <div className="flex items-center justify-between bg-zinc-100 px-3 py-2">
-          <div className="font-mono text-[9px] font-bold leading-tight text-black">
+      <div className="mb-2 bg-gradient-to-r from-zinc-500 via-zinc-200 to-zinc-500 p-[1.5px] md:p-[2px]">
+        <div className="flex items-center justify-between bg-zinc-100 px-2 md:px-3 py-1.5 md:py-2">
+          <div className="font-mono text-[7px] md:text-[9px] font-bold leading-tight text-black">
             MIDNIGHT
             <br />
             EXCHANGE
           </div>
 
           <div className="text-center text-black">
-            <div className="font-mono text-[10px] font-extrabold uppercase">
+            <div className="font-mono text-[8px] md:text-[10px] font-extrabold uppercase">
               {grade}
             </div>
 
-            <div className="-mt-1 text-2xl font-black">{gradeNumber}</div>
+            <div className="-mt-0.5 md:-mt-1 text-xl md:text-2xl font-black">{gradeNumber}</div>
           </div>
         </div>
       </div>
@@ -132,9 +132,9 @@ function ProductCard({
 
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
 
-        <div className="absolute bottom-5 left-5 z-10">
+        <div className="absolute bottom-3 md:bottom-5 left-3 md:left-5 z-10">
           <span
-            className={`mb-2 inline-flex border px-2 py-1 font-mono text-[9px] uppercase tracking-widest ${
+            className={`mb-1.5 md:mb-2 inline-flex border px-1.5 md:px-2 py-0.5 md:py-1 font-mono text-[7px] md:text-[9px] uppercase tracking-widest ${
               rarityColor === "purple"
                 ? "border-fuchsia-400 bg-fuchsia-400/10 text-fuchsia-300"
                 : "border-cyan-400 bg-cyan-400/10 text-cyan-300"
@@ -143,27 +143,27 @@ function ProductCard({
             {rarity}
           </span>
 
-          <h3 className="max-w-[220px] text-2xl font-bold uppercase leading-none tracking-tight text-white">
+          <h3 className="max-w-[160px] md:max-w-[220px] text-lg md:text-2xl font-bold uppercase leading-none tracking-tight text-white">
             {name}
           </h3>
         </div>
       </div>
 
-      <div className="mt-2 flex items-end justify-between border-t border-white/10 bg-white/[0.03] p-4">
+      <div className="mt-1.5 md:mt-2 flex items-end justify-between border-t border-white/10 bg-white/[0.03] p-2 md:p-4">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+          <p className="font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-zinc-500">
             Serial
           </p>
 
-          <p className="mt-1 font-mono text-sm text-white">{serial}</p>
+          <p className="mt-0.5 md:mt-1 font-mono text-xs md:text-sm text-white">{serial}</p>
         </div>
 
         <div className="text-right">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+          <p className="font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-zinc-500">
             Price
           </p>
 
-          <p className="mt-1 font-mono text-sm text-cyan-300">{price}</p>
+          <p className="mt-0.5 md:mt-1 font-mono text-xs md:text-sm text-cyan-300">{price}</p>
         </div>
       </div>
     </Link>
@@ -378,63 +378,65 @@ function FilterSidebar() {
 export default function Page() {
   return (
     <div className="min-h-screen flex flex-col bg-[#0A0A0C] text-white">
-      <main className="flex-grow pt-[80px]">
-        <div className="overflow-hidden border-b border-white/10 bg-black/40 py-3">
-          <div className="animate-[ticker_30s_linear_infinite] whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.3em] text-cyan-300">
+      <main className="flex-grow pt-[70px] md:pt-[80px]">
+        <div className="overflow-hidden border-b border-white/10 bg-black/40 py-2 md:py-3">
+          <div className="animate-[ticker_30s_linear_infinite] whitespace-nowrap font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-cyan-300">
             TOTAL ASSETS SECURED: 14,202 • 24H VOLUME: 1.2M USD • FLOOR PRICE: 4.8 ETH • VERIFIED TRANSACTIONS: 88,412 • TOTAL ASSETS SECURED: 14,202 • 24H VOLUME: 1.2M USD • FLOOR PRICE: 4.8 ETH • VERIFIED TRANSACTIONS: 88,412
           </div>
         </div>
 
-        <section className="mx-auto flex max-w-7xl gap-8 px-6 py-12">
-          <FilterSidebar />
+        <section className="mx-auto flex flex-col md:flex-row max-w-7xl gap-4 md:gap-8 px-4 md:px-6 py-8 md:py-12">
+          <aside className="hidden md:block w-full md:w-64 shrink-0">
+            <FilterSidebar />
+          </aside>
 
           <div className="flex-1">
-            <div className="mb-8 flex flex-col gap-4 border border-white/10 bg-zinc-950/50 px-6 py-4 backdrop-blur md:flex-row md:items-center md:justify-between">
+            <div className="mb-6 md:mb-8 flex flex-col gap-3 md:gap-4 border border-white/10 bg-zinc-950/50 px-3 md:px-6 py-3 md:py-4 backdrop-blur text-sm md:flex-row md:items-center md:justify-between">
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
                 Displaying 24 of 142 Assets
               </span>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 md:gap-4">
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
                   Sort By
                 </span>
 
-                <button className="border-b border-cyan-400/30 pb-1 font-mono text-sm text-cyan-300">
+                <button className="border-b border-cyan-400/30 pb-1 font-mono text-xs md:text-sm text-cyan-300">
                   Latest Drops
                 </button>
               </div>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-3 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
               {products.map((product) => (
                 <ProductCard key={product.serial} {...product} />
               ))}
             </div>
 
-            <div className="mt-14 flex items-center justify-center gap-3 border-t border-white/10 pt-10">
-              <button className="flex h-11 w-11 items-center justify-center border border-cyan-400/30 text-zinc-300 transition hover:bg-cyan-400 hover:text-black">
+            <div className="mt-8 md:mt-14 flex items-center justify-center gap-2 md:gap-3 border-t border-white/10 pt-6 md:pt-10 overflow-x-auto">
+              <button className="flex h-9 md:h-11 w-9 md:w-11 items-center justify-center border border-cyan-400/30 text-zinc-300 transition hover:bg-cyan-400 hover:text-black shrink-0 text-sm md:text-base">
                 ←
               </button>
 
-              <button className="flex h-11 w-11 items-center justify-center border border-cyan-400 bg-cyan-400 font-mono text-black shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+              <button className="flex h-9 md:h-11 w-9 md:w-11 items-center justify-center border border-cyan-400 bg-cyan-400 font-mono text-black shadow-[0_0_20px_rgba(34,211,238,0.4)] shrink-0 text-sm md:text-base">
                 1
               </button>
 
-              <button className="flex h-11 w-11 items-center justify-center border border-white/10 font-mono text-zinc-400 transition hover:border-cyan-400/40 hover:text-cyan-300">
+              <button className="flex h-9 md:h-11 w-9 md:w-11 items-center justify-center border border-white/10 font-mono text-zinc-400 transition hover:border-cyan-400/40 hover:text-cyan-300 shrink-0 text-sm md:text-base">
                 2
               </button>
 
-              <button className="flex h-11 w-11 items-center justify-center border border-white/10 font-mono text-zinc-400 transition hover:border-cyan-400/40 hover:text-cyan-300">
+              <button className="flex h-9 md:h-11 w-9 md:w-11 items-center justify-center border border-white/10 font-mono text-zinc-400 transition hover:border-cyan-400/40 hover:text-cyan-300 shrink-0 text-sm md:text-base">
                 3
               </button>
 
-              <span className="px-2 text-zinc-500">...</span>
+              <span className="px-1 md:px-2 text-zinc-500 text-sm md:text-base">...</span>
 
-              <button className="flex h-11 w-11 items-center justify-center border border-white/10 font-mono text-zinc-400 transition hover:border-cyan-400/40 hover:text-cyan-300">
+              <button className="flex h-9 md:h-11 w-9 md:w-11 items-center justify-center border border-white/10 font-mono text-zinc-400 transition hover:border-cyan-400/40 hover:text-cyan-300 shrink-0 text-sm md:text-base">
                 12
               </button>
 
-              <button className="flex h-11 w-11 items-center justify-center border border-cyan-400/30 text-zinc-300 transition hover:bg-cyan-400 hover:text-black">
+              <button className="flex h-9 md:h-11 w-9 md:w-11 items-center justify-center border border-cyan-400/30 text-zinc-300 transition hover:bg-cyan-400 hover:text-black shrink-0 text-sm md:text-base">
                 →
               </button>
             </div>

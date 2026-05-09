@@ -72,24 +72,24 @@ export default function MarketLiveFeed() {
   }, []);
 
   return (
-    <section className="mx-auto w-full max-w-7xl px-6 py-24">
+    <section className="mx-auto w-full max-w-7xl px-4 md:px-6 py-12 md:py-24">
       {/* HEADER */}
-      <div className="mb-12 flex flex-col gap-4 border-b border-white/10 pb-6 md:flex-row md:items-end md:justify-between">
+      <div className="mb-6 md:mb-12 flex flex-col gap-3 md:gap-4 border-b border-white/10 pb-4 md:pb-6 md:flex-row md:items-end md:justify-between">
         <div>
-            <h2 className="text-3xl font-bold tracking-tight text-white">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
                 MARKET LIVE FEED
             </h2>   
         </div>
 
-        <div className="flex items-center gap-3 font-mono text-sm text-zinc-400">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
+        <div className="flex items-center gap-2 md:gap-3 font-mono text-xs md:text-sm text-zinc-400">
+          <span className="h-1.5 md:h-2 w-1.5 md:w-2 animate-pulse rounded-full bg-cyan-400" />
 
           <span>SYNCED: 0.02ms</span>
         </div>
       </div>
 
       {/* GRID */}
-      <div ref={gridRef} className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div ref={gridRef} className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {products.map((product, index) => (
           <div
             key={product.id}

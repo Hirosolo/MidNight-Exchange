@@ -72,7 +72,7 @@ export default function Home() {
         {/* HERO SECTION */}
         <section
           id="home"
-          className="relative w-full h-[calc(100vh-80px)] min-h-[760px] flex items-center justify-center overflow-hidden animate-surface-drift"
+          className="relative w-full h-[calc(100vh-70px)] md:h-[calc(100vh-80px)] min-h-[500px] md:min-h-[760px] flex items-center justify-center overflow-hidden animate-surface-drift"
         >
           <HeroBannerSlideshow />
           <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
@@ -81,26 +81,26 @@ export default function Home() {
             <div className="hero-orb hero-orb-fuchsia" />
             <div className="hero-scanline" />
           </div>
-          <div className="relative z-10 w-full max-w-[1440px] px-margin flex flex-col items-center text-center space-y-lg -translate-y-14 md:-translate-y-20 animate-hero-content-loop">
-            <div className="flex flex-col items-center space-y-md reveal-up reveal-delay-1">
-              <span className="font-data-mono text-[10px] md:text-[11px] text-white/80 tracking-widest uppercase animate-pulse-glow">
+          <div className="relative z-10 w-full max-w-[1440px] px-4 md:px-margin flex flex-col items-center text-center space-y-6 md:space-y-lg -translate-y-8 md:-translate-y-20 animate-hero-content-loop">
+            <div className="flex flex-col items-center space-y-3 md:space-y-md reveal-up reveal-delay-1">
+              <span className="font-data-mono text-[8px] md:text-[11px] text-white/80 tracking-widest uppercase animate-pulse-glow">
                 I[WADE] Drop Set - 001/300, Multi-color]
               </span>
             </div>
-            <h1 className="font-display-lg text-[52px] md:text-[68px] text-white leading-[1.08] tracking-tighter text-flow reveal-up reveal-delay-2 animate-glitch-hero">
+            <h1 className="font-display-lg text-[32px] md:text-[52px] lg:text-[68px] text-white leading-[1.08] tracking-tighter text-flow reveal-up reveal-delay-2 animate-glitch-hero">
               THE NEW ESSENTIALS DROP IS HERE
             </h1>
-            <p className="font-body-base text-[14px] md:text-[16px] text-white/90 max-w-2xl mx-auto tracking-[0.02em] reveal-up reveal-delay-3 animate-shimmer-wave">
+            <p className="font-body-base text-[13px] md:text-[14px] lg:text-[16px] text-white/90 max-w-2xl mx-auto tracking-[0.02em] reveal-up reveal-delay-3 animate-shimmer-wave px-2">
               Exclusive, authenticated physical assets bridged to digital
               provenance. Secure your allocation before the vault seals.
             </p>
-            <div className="pt-[56px] md:pt-[72px] reveal-up reveal-delay-3">
-              <button className="relative overflow-hidden bg-primary-container/70 text-on-primary-container font-label-caps text-[14px] md:text-[15px] font-bold tracking-widest px-16 py-4 rounded-sm shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:shadow-[0_0_34px_rgba(250,204,21,0.85)] transition-all duration-300 flex items-center justify-center group">
+            <div className="pt-8 md:pt-[56px] lg:pt-[72px] reveal-up reveal-delay-3">
+              <button className="relative overflow-hidden bg-primary-container/70 text-on-primary-container font-label-caps text-[12px] md:text-[14px] lg:text-[15px] font-bold tracking-widest px-8 md:px-16 py-3 md:py-4 rounded-sm shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:shadow-[0_0_34px_rgba(250,204,21,0.85)] transition-all duration-300 flex items-center justify-center group">
                 <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
                 <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_10%,rgba(255,255,255,0.18)_38%,transparent_62%)] -translate-x-[120%] transition-transform duration-1000 group-hover:translate-x-[120%]" />
                 <span className="relative z-10 flex items-center animate-button-glitch">
                   SHOP THE DROP NOW
-                  <span className="material-symbols-outlined ml-1.5 text-[18px] transition-transform group-hover:translate-x-1">
+                  <span className="material-symbols-outlined ml-1.5 text-[16px] md:text-[18px] transition-transform group-hover:translate-x-1">
                     arrow_forward
                   </span>
                 </span>
@@ -116,7 +116,7 @@ export default function Home() {
         {/* AUTHENTICATED ASSET PROTOCOL */}
         {/* ========================================= */}
 
-        <section className="relative mx-auto max-w-7xl overflow-hidden px-6 py-28">
+        <section className="relative mx-auto max-w-7xl overflow-hidden px-4 md:px-6 py-12 md:py-28">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.08),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(217,70,239,0.06),transparent_38%)] opacity-80 animate-surface-drift" />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:84px_84px] opacity-20 animate-surface-grid" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_55%)] opacity-60 animate-surface-breathe" />
@@ -127,11 +127,11 @@ export default function Home() {
             style={{ animationDelay: "-4s" }}
           />
 
-          <h2 className="relative z-10 mb-14 text-center text-3xl font-bold tracking-tight text-white reveal-up animate-surface-breathe">
+          <h2 className="relative z-10 mb-8 md:mb-14 text-center text-xl md:text-3xl font-bold tracking-tight text-white reveal-up animate-surface-breathe px-4">
             AUTHENTICATED ASSET PROTOCOL
           </h2>
 
-          <div className="relative z-10 grid gap-px overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-400/20 to-transparent p-px md:grid-cols-2 animate-surface-frame">
+          <div className="relative z-10 grid gap-px overflow-hidden rounded-lg md:rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-400/20 to-transparent p-px grid-cols-1 md:grid-cols-2 animate-surface-frame">
             {featureTiles.map((item, i) => (
               <div
                 key={i}
@@ -147,17 +147,17 @@ export default function Home() {
                 )}
 
                 <div className="relative z-10">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/30 bg-black/40 backdrop-blur">
-                    <span className="material-symbols-outlined text-[28px] text-cyan-300">
+                  <div className="mb-4 md:mb-6 flex h-12 md:h-14 w-12 md:w-14 items-center justify-center rounded-2xl border border-cyan-400/30 bg-black/40 backdrop-blur">
+                    <span className="material-symbols-outlined text-[24px] md:text-[28px] text-cyan-300">
                       {item.icon}
                     </span>
                   </div>
 
-                  <h3 className="mb-4 text-xl font-bold tracking-wide text-white">
+                  <h3 className="mb-2 md:mb-4 text-lg md:text-xl font-bold tracking-wide text-white text-left">
                     {item.title}
                   </h3>
 
-                  <p className="max-w-lg text-sm leading-7 text-zinc-400">
+                  <p className="max-w-lg text-xs md:text-sm leading-6 md:leading-7 text-zinc-400 text-left">
                     {item.description}
                   </p>
                 </div>
@@ -170,7 +170,7 @@ export default function Home() {
         {/* COMMUNITY VERIFIED DROPS */}
         {/* ========================================= */}
 
-        <section className="relative overflow-hidden border-y border-zinc-800 bg-zinc-950/60 py-24">
+        <section className="relative overflow-hidden border-y border-zinc-800 bg-zinc-950/60 py-12 md:py-24">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.08),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(217,70,239,0.08),transparent_38%)] opacity-80 animate-surface-drift" />
           <div className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-surface-orb" />
           <div
@@ -181,8 +181,8 @@ export default function Home() {
 
           {/* ticker */}
 
-          <div className="relative z-10 mb-14 whitespace-nowrap overflow-hidden">
-            <div className="animate-marquee flex w-max gap-8 text-sm uppercase tracking-[0.3em] text-cyan-300/70">
+          <div className="relative z-10 mb-8 md:mb-14 whitespace-nowrap overflow-hidden">
+            <div className="animate-marquee flex w-max gap-4 md:gap-8 text-xs md:text-sm uppercase tracking-[0.3em] text-cyan-300/70">
               <span>{">"} USER 0x7A... BOUGHT VOID-TEE</span>
               <span>|</span>
               <span>{">"} VAULT DEPOSIT: CHRONO-SNKRS #001</span>
