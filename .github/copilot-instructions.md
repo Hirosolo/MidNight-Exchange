@@ -19,12 +19,12 @@ This is a Next.js + React + Tailwind CSS project using TypeScript and the App Ro
 - Use the `@/*` import alias for absolute imports
 
 ## Project Structure
-- `app/` - Next.js project root
-- `app/src/` - Source code directory
-- `app/src/app/` - App Router pages and layouts
-- `app/src/components/` - Reusable React components
-- `app/public/` - Static assets
-- `app/public/images/` - Design images (symlinked from D:\code\UI\images)
-- `app/tailwind.config.ts` - Tailwind CSS configuration
-- `app/tsconfig.json` - TypeScript configuration
+- Repository root - Next.js project root
+- `src/` - Source code directory
+- `src/app/` - App Router pages and layouts
+- `src/components/` - Reusable React components
+- `public/` - Static assets
+- `public/images/` - Design-related images
+- `tailwind.config.ts` - Tailwind CSS configuration
+- `tsconfig.json` - TypeScript configuration
 - `images/` - Original design image assets

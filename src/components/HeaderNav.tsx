@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import FuzzyText from "@/components/FuzzyText";
@@ -13,8 +13,6 @@ const tabs = [
 
 export default function HeaderNav() {
   const [activeHash, setActiveHash] = useState("");
-  const navRef = useRef<HTMLElement | null>(null);
-  const indicatorRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -30,32 +28,6 @@ export default function HeaderNav() {
 
   const activeTab = pathname === "/products" ? "products" : activeHash === "market" ? "market" : "home";
 
-  useEffect(() => {
-    const updateIndicator = () => {
-      const nav = navRef.current;
-      const indicator = indicatorRef.current;
-      if (!nav || !indicator) return;
-
-      const el = nav.querySelector(`[data-tab="${activeTab}"]`) as HTMLElement | null;
-      if (!el) {
-        indicator.style.width = "0px";
-        return;
-      }
-
-      const navRect = nav.getBoundingClientRect();
-      const rect = el.getBoundingClientRect();
-      const left = rect.left - navRect.left;
-      const width = rect.width;
-
-      indicator.style.transform = `translateX(${left}px)`;
-      indicator.style.width = `${width}px`;
-    };
-
-    updateIndicator();
-    window.addEventListener("resize", updateIndicator);
-    return () => window.removeEventListener("resize", updateIndicator);
-  }, [activeTab]);
-
   return (
     <header className="fixed top-0 z-50 w-full bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
       <div className="relative flex items-center px-margin py-4 w-full max-w-[1440px] mx-auto gap-10">
@@ -70,17 +42,14 @@ export default function HeaderNav() {
         >
           MIDNIGHT EXCHANGE
         </FuzzyText>
-        <nav
-          ref={navRef}
-          className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-end gap-10 lg:gap-14"
-        >
+        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-2 border border-cyan-300/35 bg-gradient-to-r from-[#0a1014]/95 via-[#111118]/95 to-[#140d1d]/95 p-1 shadow-[0_0_26px_rgba(0,251,251,0.18),0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-md">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
 
-            const tabClassName = `flex flex-col items-start gap-1 pb-2 font-label-caps text-label-caps transition-colors duration-300 active:scale-95 hover:text-primary dark:hover:text-primary-fixed ${
+            const tabClassName = `inline-flex items-center justify-center border px-4 py-2 font-label-caps text-label-caps tracking-[0.18em] transition-all duration-300 active:scale-95 ${
               isActive
-                ? "text-primary dark:text-primary-fixed"
-                : "text-on-surface-variant dark:text-on-surface-variant"
+                ? "border-cyan-300/80 bg-gradient-to-b from-cyan-400/20 to-cyan-500/5 text-cyan-100 [text-shadow:0_0_14px_rgba(0,251,251,0.9)] shadow-[inset_0_0_0_1px_rgba(0,251,251,0.25),0_0_22px_rgba(0,251,251,0.35)]"
+                : "border-fuchsia-300/20 bg-black/20 text-zinc-300 hover:border-cyan-300/60 hover:bg-cyan-500/10 hover:text-cyan-100 hover:[text-shadow:0_0_10px_rgba(0,251,251,0.7)]"
             }`;
 
             return (
@@ -100,11 +69,6 @@ export default function HeaderNav() {
               )
             );
           })}
-          <div
-            ref={indicatorRef}
-            className="absolute bottom-0 h-[4px] rounded-full bg-[#00fbfb] shadow-[0_0_16px_0_rgba(0,251,251,1)] ring-1 ring-[#00fbfb]/40 transition-all duration-300"
-            style={{ transform: "translateX(0px)", width: 0 }}
-          />
         </nav>
       </div>
     </header>

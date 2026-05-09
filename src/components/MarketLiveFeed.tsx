@@ -9,8 +9,7 @@ const products = [
     rarityColor: "cyan" as const,
     grade: "MINT",
     gradeNumber: "10",
-    image:
-      "/images/a_premium_collectible_graphic_tee_displayed_inside_a_graded_trading_card_style/screen.png",
+    image: "/images/tee-graded.png",
   },
   {
     id: "#114-B",
@@ -20,8 +19,7 @@ const products = [
     rarityColor: "purple" as const,
     grade: "MINT",
     gradeNumber: "9.5",
-    image:
-      "/images/a_limited_edition_streetwear_accessory_or_cap_displayed_inside_a_graded_trading/screen.png",
+    image: "/images/cap-graded.png",
   },
   {
     id: "#990-S",
@@ -31,8 +29,7 @@ const products = [
     rarityColor: "cyan" as const,
     grade: "GEM",
     gradeNumber: "10",
-    image:
-      "/images/a_professional_cinematic_shot_of_a_physical_metallic_token_or_medallion/screen.png",
+    image: "/images/token-medallion.png",
   },
 ];
 

@@ -3,10 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 
 const heroImages = [
-  { src: "/images/banner/screen.png", alt: "Midnight banner 1" },
-  { src: "/images/banner/screen2.png", alt: "Midnight banner 2" },
-  { src: "/images/banner/screen3.png", alt: "Midnight banner 3" },
-  { src: "/images/banner/screen4.png", alt: "Midnight banner 4" },
+  { src: "/images/banner-1.png", alt: "Midnight banner 1" },
+  { src: "/images/banner-2.png", alt: "Midnight banner 2" },
+  { src: "/images/banner-3.png", alt: "Midnight banner 3" },
+  { src: "/images/banner-4.png", alt: "Midnight banner 4" },
+  { src: "/images/banner-5.png", alt: "Midnight banner 5" },
+  { src: "/images/banner-6.png", alt: "Midnight banner 6" },
+  { src: "/images/banner-7.png", alt: "Midnight banner 7" },
+  { src: "/images/banner-8.png", alt: "Midnight banner 8" },
 ];
 
 const HOLD_DURATION_MS = 4200;

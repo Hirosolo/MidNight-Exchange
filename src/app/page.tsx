@@ -10,8 +10,7 @@ export default function Home() {
       name: "Void-Tech Tee",
       id: "#882-A",
       price: "$180",
-      image:
-        "/images/a_premium_collectible_graphic_tee_displayed_inside_a_graded_trading_card_style/screen.png",
+      image: "/images/tee-graded.png",
       description:
         "A sleek, minimalist tech-wear t-shirt presented in a premium acrylic slab.",
     },
@@ -19,8 +18,7 @@ export default function Home() {
       name: "Ghost Dragon Cap",
       id: "#114-B",
       price: "$120",
-      image:
-        "/images/a_limited_edition_streetwear_accessory_or_cap_displayed_inside_a_graded_trading/screen.png",
+      image: "/images/cap-graded.png",
       description:
         "A dark, futuristic baseball cap featuring an intricate dragon embroidery.",
     },
@@ -28,8 +26,7 @@ export default function Home() {
       name: "Chrono-Syndicate Snkrs",
       id: "#990-S",
       price: "$450",
-      image:
-        "/images/a_professional_cinematic_shot_of_a_physical_metallic_token_or_medallion/screen.png",
+      image: "/images/token-medallion.png",
       description:
         "High-top, cyberpunk-inspired sneakers in matte black with subtle neon accents.",
     },
@@ -48,16 +45,14 @@ export default function Home() {
       icon: "verified",
       description:
         "Assets are rigorously inspected by independent experts. We employ machine learning optics and structural analysis to guarantee GEM MINT status before encasement.",
-      image:
-        "/images/a_professional_high_fidelity_macro_photograph_of_a_magnifying_glass_inspecting/screen.png",
+      image: "/images/magnifier-inspection.png",
     },
     {
       title: "PHYSICAL STORAGE",
       icon: "lock",
       description:
         "Items are held in a climate-controlled, Class-3 audited vault. Real-time telemetry ensures optimal preservation of physical assets until redemption.",
-      image:
-        "/images/a_professional_high_fidelity_photo_of_a_heavy_duty_high_tech_vault_door_with_a/screen.png",
+      image: "/images/vault-door-tech.png",
     },
     {
       title: "DIGITAL PROVENANCE",
