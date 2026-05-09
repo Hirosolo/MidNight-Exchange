@@ -1,23 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ProductMarketCard from "@/components/ProductMarketCard";
+import HeaderNav from "@/components/HeaderNav";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("home");
-
-  useEffect(() => {
-    const updateFromHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      setActiveTab(hash || "home");
-    };
-
-    updateFromHash();
-    window.addEventListener("hashchange", updateFromHash);
-
-    return () => window.removeEventListener("hashchange", updateFromHash);
-  }, []);
-
   const products = [
     {
       name: "Void-Tech Tee",
@@ -83,48 +69,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-surface">
-      {/* HEADER */}
-      <header className="fixed top-0 z-50 w-full bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
-        <div className="flex justify-between items-center px-margin py-4 w-full max-w-[1440px] mx-auto">
-          <div className="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-primary-fixed">
-            MIDNIGHT EXCHANGE
-          </div>
-          <nav className="hidden md:flex items-end gap-10 lg:gap-14">
-            {[
-              { id: "home", label: "HOME", href: "#home" },
-              { id: "market", label: "MARKET", href: "#market" },
-              { id: "vault", label: "VAULT", href: "#vault" },
-              { id: "grading", label: "GRADING", href: "#grading" },
-              { id: "auctions", label: "AUCTIONS", href: "#auctions" },
-            ].map((tab) => {
-              const isActive = activeTab === tab.id;
-
-              return (
-                <a
-                  key={tab.id}
-                  className={`flex flex-col items-start gap-1 pb-3 font-label-caps text-label-caps transition-all duration-300 active:scale-95 hover:text-primary dark:hover:text-primary-fixed ${
-                    isActive
-                      ? "text-primary dark:text-primary-fixed"
-                      : "text-on-surface-variant dark:text-on-surface-variant"
-                  }`}
-                  href={tab.href}
-                  onClick={() => setActiveTab(tab.id)}
-                >
-                  {tab.label}
-                  {isActive && (
-                    <span className="mt-1 h-[4px] w-12 rounded-full bg-[#00fbfb] shadow-[0_0_16px_0_rgba(0,251,251,1)] ring-1 ring-[#00fbfb]/40"></span>
-                  )}
-                </a>
-              );
-            })}
-          </nav>
-          <div className="flex items-center space-x-md">
-            <button className="text-primary dark:text-primary-fixed font-label-caps text-label-caps">
-              CONNECT WALLET
-            </button>
-          </div>
-        </div>
-      </header>
+      <HeaderNav />
 
       <main className="flex-grow pt-[80px]">
         {/* HERO SECTION */}
@@ -135,7 +80,7 @@ export default function Home() {
           <div className="absolute inset-0 z-0">
             <img
               alt="New Essentials Drop"
-              className="w-full h-full object-cover scale-x-[1.3] scale-y-[1.12]"
+              className="w-full h-full object-cover object-center scale-x-[1.84] scale-y-[1.495]"
               src="/images/hero-banner.png"
             />
             <div className="absolute inset-0 bg-black/40"></div>
@@ -143,29 +88,32 @@ export default function Home() {
           <div className="relative z-10 w-full max-w-[1440px] px-margin flex flex-col items-center text-center space-y-lg -translate-y-14 md:-translate-y-20">
             <div className="flex flex-col items-center space-y-md reveal-up reveal-delay-1">
               <div className="flex items-center gap-base flex-wrap justify-center">
-                <span className="bg-[#facc15] text-black px-3 py-1 mr-2 font-label-caps text-label-caps rounded-sm">
+                <span className="bg-[#facc15] text-black px-3 py-1 mr-2 font-label-caps text-[10px] md:text-[11px] rounded-sm">
                   NEW COLLECTION
                 </span>
-                <span className="bg-white/90 text-black border border-white px-2 py-1 ml-2 font-label-caps text-label-caps rounded-sm">
+                <span className="bg-white/90 text-black border border-white px-2 py-1 ml-2 font-label-caps text-[10px] md:text-[11px] rounded-sm">
                   GEM MINT 10
                 </span>
               </div>
-              <span className="font-data-mono text-data-mono text-white/80 tracking-widest uppercase">
+              <span className="font-data-mono text-[10px] md:text-[11px] text-white/80 tracking-widest uppercase">
                 I[WADE] Drop Set - 001/300, Multi-color]
               </span>
             </div>
-            <h1 className="font-display-lg text-[64px] md:text-[80px] text-white leading-[1.08] tracking-tighter text-flow reveal-up reveal-delay-2">
+            <h1 className="font-display-lg text-[52px] md:text-[68px] text-white leading-[1.08] tracking-tighter text-flow reveal-up reveal-delay-2">
               THE NEW ESSENTIALS DROP IS HERE
             </h1>
-            <p className="font-body-base text-body-base text-white/90 max-w-2xl mx-auto tracking-[0.02em] reveal-up reveal-delay-3">
+            <p className="font-body-base text-[14px] md:text-[16px] text-white/90 max-w-2xl mx-auto tracking-[0.02em] reveal-up reveal-delay-3">
               Exclusive, authenticated physical assets bridged to digital
               provenance. Secure your allocation before the vault seals.
             </p>
             <div className="pt-[56px] md:pt-[72px] reveal-up reveal-delay-3">
-              <button className="bg-primary-container text-on-primary-container font-label-caps text-[18px] font-bold tracking-widest px-20 py-6 rounded-sm shadow-[0_0_20px_rgba(250,204,21,0.4)] hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 flex items-center justify-center group">
-                SHOP THE DROP NOW
-                <span className="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1">
-                  arrow_forward
+              <button className="relative overflow-hidden bg-primary-container/70 text-on-primary-container font-label-caps text-[14px] md:text-[15px] font-bold tracking-widest px-16 py-4 rounded-sm shadow-[0_0_20px_rgba(250,204,21,6)] hover:shadow-[0_0_30px_rgba(250,204,21,0.8)] transition-all duration-300 flex items-center justify-center group">
+                <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
+                <span className="relative z-10 flex items-center">
+                  SHOP THE DROP NOW
+                  <span className="material-symbols-outlined ml-1.5 text-[18px] transition-transform group-hover:translate-x-1">
+                    arrow_forward
+                  </span>
                 </span>
               </button>
             </div>
