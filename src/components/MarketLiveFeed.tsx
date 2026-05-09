@@ -53,19 +53,24 @@ export default function MarketLiveFeed() {
 
       {/* GRID */}
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {products.map((product) => (
-          <ProductMarketCard
+        {products.map((product, index) => (
+          <div
             key={product.id}
-            name={product.name}
-            serial={product.id}
-            price={product.price}
-            image={product.image}
-            rarity={product.rarity}
-            rarityColor={product.rarityColor}
-            grade={product.grade}
-            gradeNumber={product.gradeNumber}
-            href="/products/details"
-          />
+            className="reveal-up"
+            style={{ animationDelay: `${index * 120}ms` }}
+          >
+            <ProductMarketCard
+              name={product.name}
+              serial={product.id}
+              price={product.price}
+              image={product.image}
+              rarity={product.rarity}
+              rarityColor={product.rarityColor}
+              grade={product.grade}
+              gradeNumber={product.gradeNumber}
+              href="/products/details"
+            />
+          </div>
         ))}
       </div>
     </section>

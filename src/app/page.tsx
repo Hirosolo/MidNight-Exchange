@@ -1,37 +1,9 @@
 "use client";
 
-import ProductMarketCard from "@/components/ProductMarketCard";
 import HeroBannerSlideshow from "@/components/HeroBannerSlideshow";
 import MarketLiveFeed from "@/components/MarketLiveFeed";
 
 export default function Home() {
-  const products = [
-    {
-      name: "Void-Tech Tee",
-      id: "#882-A",
-      price: "$180",
-      image: "/images/tee-graded.png",
-      description:
-        "A sleek, minimalist tech-wear t-shirt presented in a premium acrylic slab.",
-    },
-    {
-      name: "Ghost Dragon Cap",
-      id: "#114-B",
-      price: "$120",
-      image: "/images/cap-graded.png",
-      description:
-        "A dark, futuristic baseball cap featuring an intricate dragon embroidery.",
-    },
-    {
-      name: "Chrono-Syndicate Snkrs",
-      id: "#990-S",
-      price: "$450",
-      image: "/images/token-medallion.png",
-      description:
-        "High-top, cyberpunk-inspired sneakers in matte black with subtle neon accents.",
-    },
-  ];
-
   const featureTiles = [
     {
       title: "AUTHENTICITY CHAIN",
@@ -72,16 +44,14 @@ export default function Home() {
           className="relative w-full h-[calc(100vh-80px)] min-h-[760px] flex items-center justify-center overflow-hidden"
         >
           <HeroBannerSlideshow />
-          <div className="relative z-10 w-full max-w-[1440px] px-margin flex flex-col items-center text-center space-y-lg -translate-y-14 md:-translate-y-20">
+          <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+            <div className="hero-grid-overlay" />
+            <div className="hero-orb hero-orb-cyan" />
+            <div className="hero-orb hero-orb-fuchsia" />
+            <div className="hero-scanline" />
+          </div>
+          <div className="relative z-10 w-full max-w-[1440px] px-margin flex flex-col items-center text-center space-y-lg -translate-y-14 md:-translate-y-20 animate-hero-content-loop">
             <div className="flex flex-col items-center space-y-md reveal-up reveal-delay-1">
-              <div className="flex items-center gap-base flex-wrap justify-center">
-                <span className="bg-[#facc15] text-black px-3 py-1 mr-2 font-label-caps text-[10px] md:text-[11px] rounded-sm">
-                  NEW COLLECTION
-                </span>
-                <span className="bg-white/90 text-black border border-white px-2 py-1 ml-2 font-label-caps text-[10px] md:text-[11px] rounded-sm">
-                  GEM MINT 10
-                </span>
-              </div>
               <span className="font-data-mono text-[10px] md:text-[11px] text-white/80 tracking-widest uppercase">
                 I[WADE] Drop Set - 001/300, Multi-color]
               </span>
@@ -94,8 +64,9 @@ export default function Home() {
               provenance. Secure your allocation before the vault seals.
             </p>
             <div className="pt-[56px] md:pt-[72px] reveal-up reveal-delay-3">
-              <button className="relative overflow-hidden bg-primary-container/70 text-on-primary-container font-label-caps text-[14px] md:text-[15px] font-bold tracking-widest px-16 py-4 rounded-sm shadow-[0_0_20px_rgba(250,204,21,6)] hover:shadow-[0_0_30px_rgba(250,204,21,0.8)] transition-all duration-300 flex items-center justify-center group">
+              <button className="relative overflow-hidden bg-primary-container/70 text-on-primary-container font-label-caps text-[14px] md:text-[15px] font-bold tracking-widest px-16 py-4 rounded-sm shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:shadow-[0_0_34px_rgba(250,204,21,0.85)] transition-all duration-300 flex items-center justify-center group">
                 <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_10%,rgba(255,255,255,0.18)_38%,transparent_62%)] -translate-x-[120%] transition-transform duration-1000 group-hover:translate-x-[120%]" />
                 <span className="relative z-10 flex items-center">
                   SHOP THE DROP NOW
                   <span className="material-symbols-outlined ml-1.5 text-[18px] transition-transform group-hover:translate-x-1">
@@ -115,7 +86,7 @@ export default function Home() {
         {/* ========================================= */}
 
         <section className="mx-auto max-w-7xl px-6 py-28">
-          <h2 className="mb-14 text-center text-3xl font-bold tracking-tight text-white">
+          <h2 className="mb-14 text-center text-3xl font-bold tracking-tight text-white reveal-up">
             AUTHENTICATED ASSET PROTOCOL
           </h2>
 
@@ -123,13 +94,14 @@ export default function Home() {
             {featureTiles.map((item, i) => (
               <div
                 key={i}
-                className="group relative overflow-hidden bg-zinc-950 p-10"
+                className="group relative overflow-hidden bg-zinc-950 p-10 reveal-up"
+                style={{ animationDelay: `${i * 120}ms` }}
               >
                 {item.image && (
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="absolute inset-0 h-full w-full object-cover opacity-10 transition duration-500 group-hover:opacity-30"
+                    className="absolute inset-0 h-full w-full object-cover opacity-10 transition duration-500 group-hover:opacity-30 group-hover:scale-105"
                   />
                 )}
 
@@ -214,13 +186,14 @@ export default function Home() {
         {/* ========================================= */}
 
         <section className="mx-auto max-w-7xl px-6 py-28">
-          <div className="grid overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950 md:grid-cols-2">
+          <div className="grid overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950 md:grid-cols-2 reveal-up reveal-delay-2">
             <div className="relative min-h-[500px]">
               <img
                 src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop"
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover animate-hero-drift"
               />
+              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-transparent to-fuchsia-500/15" />
             </div>
 
             <div className="flex flex-col justify-center bg-black/50 p-12 backdrop-blur">
@@ -258,12 +231,12 @@ export default function Home() {
         {/* ========================================= */}
 
         <section className="mx-auto flex max-w-5xl flex-col items-center px-6 py-32 text-center">
-          <h2 className="max-w-4xl text-5xl font-black uppercase tracking-tight text-white md:text-7xl">
+          <h2 className="max-w-4xl text-5xl font-black uppercase tracking-tight text-white md:text-7xl reveal-up">
             Reserve Your Allocated Supply
           </h2>
 
-          <div className="relative my-16 h-56 w-56">
-            <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-3xl" />
+          <div className="relative my-16 h-56 w-56 reveal-up reveal-delay-1">
+            <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-3xl animate-float-slow" />
 
             <img
               src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1000&auto=format&fit=crop"
@@ -272,14 +245,14 @@ export default function Home() {
             />
           </div>
 
-          <div className="mb-8 text-5xl font-bold text-white">
+          <div className="mb-8 text-5xl font-bold text-white reveal-up reveal-delay-2">
             $1,200{" "}
             <span className="text-xl font-medium text-zinc-500">
               (Reservation Fee)
             </span>
           </div>
 
-          <button className="group relative overflow-hidden rounded-xl border border-cyan-400/30 bg-cyan-300 px-14 py-6 text-sm font-black uppercase tracking-[0.3em] text-black transition hover:shadow-[0_0_50px_rgba(34,211,238,0.4)]">
+          <button className="group relative overflow-hidden rounded-xl border border-cyan-400/30 bg-cyan-300 px-14 py-6 text-sm font-black uppercase tracking-[0.3em] text-black transition hover:shadow-[0_0_50px_rgba(34,211,238,0.4)] reveal-up reveal-delay-3">
             <span className="relative z-10 flex items-center gap-3">
               Reserve Now
               <span className="material-symbols-outlined text-[20px] transition group-hover:translate-x-1">

@@ -9,7 +9,7 @@ const tabs = [
   { id: "home", label: "HOME", href: "/", kind: "route" as const },
   { id: "categories", label: "CATEGORIES", href: "/products", kind: "route" as const },
   { id: "brands", label: "BRANDS", href: "/products", kind: "route" as const },
-  { id: "aboutus", label: "ABOUT US", href: "/#aboutus", kind: "route" as const },
+  { id: "aboutus", label: "ABOUT US", href: "/about", kind: "route" as const },
   { id: "contactus", label: "CONTACT US", href: "/#contactus", kind: "route" as const },
 
 ];
@@ -30,7 +30,16 @@ export default function HeaderNav() {
     return () => window.removeEventListener("hashchange", updateHash);
   }, []);
 
-  const activeTab = pathname === "/products" ? "products" : activeHash === "market" ? "market" : "home";
+  const activeTab =
+    pathname === "/about"
+      ? "aboutus"
+      : pathname === "/products"
+        ? hoverTab === "brands"
+          ? "brands"
+          : "categories"
+        : activeHash === "contactus"
+          ? "contactus"
+          : "home";
 
   return (
     <header className="fixed top-0 z-50 w-full py-2 bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
@@ -46,26 +55,35 @@ export default function HeaderNav() {
         >
           MIDNIGHT STORE
         </FuzzyText>
-        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-2 border border-cyan-300/35 bg-gradient-to-r from-[#0a1014]/95 via-[#111118]/95 to-[#140d1d]/95 p-1 shadow-[0_0_26px_rgba(0,251,251,0.18),0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-md">
+        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-5 border border-cyan-300/15 bg-[linear-gradient(90deg,rgba(8,12,16,0.95),rgba(13,14,22,0.92),rgba(11,16,20,0.95))] px-5 py-2 backdrop-blur-md">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
 
-            const tabClassName = `inline-flex items-center justify-center border px-2 py-2 font-label-caps text-xs tracking-[0.18em] transition-all duration-300 active:scale-95 ${
+            const tabClassName = `group inline-flex items-center gap-2 font-label-caps text-xs tracking-[0.24em] transition-colors duration-300 active:scale-95 ${
               isActive
-                ? "border-cyan-300/80 bg-gradient-to-b from-cyan-400/20 to-cyan-500/5 text-cyan-100 [text-shadow:0_0_14px_rgba(0,251,251,0.9)] shadow-[inset_0_0_0_1px_rgba(0,251,251,0.25),0_0_22px_rgba(0,251,251,0.35)] animate-navbar-beep-slow"
-                : "border-fuchsia-300/20 bg-black/20 text-zinc-300 hover:border-cyan-300/60 hover:bg-cyan-500/10 hover:text-cyan-100 hover:[text-shadow:0_0_10px_rgba(0,251,251,0.7)]"
+                ? "text-cyan-100"
+                : "text-zinc-400 hover:text-cyan-100"
             }`;
 
             const commonProps = {
               onMouseEnter: () => setHoverTab(tab.id),
               onFocus: () => setHoverTab(tab.id),
-              onMouseLeave: () => setHoverTab("") as any,
+              onMouseLeave: () => setHoverTab(""),
             };
 
             return (
               tab.kind === "route" ? (
                 <Link key={tab.id} data-tab={tab.id} className={tabClassName} href={tab.href} {...commonProps}>
-                  {tab.label}
+                  <span
+                    className={`inline-block h-4 w-[2px] ${
+                      isActive
+                        ? "bg-cyan-200 animate-terminal-bar-breathe"
+                        : "bg-zinc-500/80 group-hover:bg-cyan-200/90 group-hover:animate-terminal-bar-breathe"
+                    }`}
+                  />
+                  <span className="terminal-tab-text">
+                    {tab.label}
+                  </span>
                 </Link>
               ) : (
                 <a
@@ -75,7 +93,16 @@ export default function HeaderNav() {
                   href={tab.href}
                   {...commonProps}
                 >
-                  {tab.label}
+                  <span
+                    className={`inline-block h-4 w-[2px] ${
+                      isActive
+                        ? "bg-cyan-200 animate-terminal-bar-breathe"
+                        : "bg-zinc-500/80 group-hover:bg-cyan-200/90 group-hover:animate-terminal-bar-breathe"
+                    }`}
+                  />
+                  <span className="terminal-tab-text">
+                    {tab.label}
+                  </span>
                 </a>
               )
             );
@@ -207,24 +234,48 @@ export default function HeaderNav() {
         </div>
       </div>
       <style jsx global>{`
-        @keyframes navbar-beep-slow {
+        @keyframes terminal-bar-breathe {
           0% {
+            opacity: 0.42;
+            transform: scaleY(0.72);
+          }
+          50% {
+            opacity: 1;
+            transform: scaleY(1);
+          }
+          100% {
+            opacity: 0.42;
+            transform: scaleY(0.72);
+          }
+        }
+
+        @keyframes terminal-text-flicker {
+          0% {
+            opacity: 0.86;
+          }
+          45% {
             opacity: 1;
           }
-          83.333% {
-            opacity: 0.5;
+          55% {
+            opacity: 0.78;
           }
           100% {
             opacity: 1;
           }
         }
 
-        .animate-navbar-beep-slow {
-          animation: navbar-beep-slow 1s linear infinite;
+        .animate-terminal-bar-breathe {
+          animation: terminal-bar-breathe 1.35s ease-in-out infinite;
+          transform-origin: center;
+        }
+
+        .terminal-tab-text {
+          animation: terminal-text-flicker 2.2s steps(2, end) infinite;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .animate-navbar-beep-slow {
+          .animate-terminal-bar-breathe,
+          .terminal-tab-text {
             animation: none;
           }
         }
