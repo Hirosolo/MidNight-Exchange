@@ -1,4 +1,5 @@
 import ProductMarketCard from "@/components/ProductMarketCard";
+import { useEffect, useRef } from "react";
 
 const products = [
   {
@@ -34,6 +35,42 @@ const products = [
 ];
 
 export default function MarketLiveFeed() {
+  const gridRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const container = gridRef.current;
+    if (!container) return;
+
+    const items = Array.from(container.querySelectorAll<HTMLElement>(".reveal-up"));
+
+    if (prefersReduced) {
+      items.forEach((it) => it.classList.add("is-visible"));
+      return;
+    }
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            el.classList.add("is-visible");
+            // once visible, unobserve to avoid further work
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    items.forEach((it) => obs.observe(it));
+
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section className="mx-auto w-full max-w-7xl px-6 py-24">
       {/* HEADER */}
@@ -52,12 +89,12 @@ export default function MarketLiveFeed() {
       </div>
 
       {/* GRID */}
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div ref={gridRef} className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {products.map((product, index) => (
           <div
             key={product.id}
             className="reveal-up"
-            style={{ animationDelay: `${index * 120}ms` }}
+            style={{ transitionDelay: `${index * 120}ms` }}
           >
             <ProductMarketCard
               name={product.name}

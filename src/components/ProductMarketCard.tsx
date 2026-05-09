@@ -33,7 +33,14 @@ export default function ProductMarketCard({
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 bg-cyan-400/5" />
-        <div className="absolute right-0 top-0 h-40 w-40 bg-cyan-400/10 blur-3xl" />
+        <div
+          className="absolute right-0 top-0 h-40 w-40 rounded-full opacity-60"
+          style={{
+            background: "radial-gradient(circle at 30% 30%, rgba(34,211,238,0.22), rgba(34,211,238,0.06) 40%, transparent 60%)",
+            willChange: "opacity, transform",
+            transform: "translate3d(0, 0, 0)",
+          }}
+        />
       </div>
 
       <div className="mb-2 bg-gradient-to-r from-zinc-500 via-zinc-200 to-zinc-500 p-[2px]">

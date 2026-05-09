@@ -2,8 +2,37 @@
 
 import HeroBannerSlideshow from "@/components/HeroBannerSlideshow";
 import MarketLiveFeed from "@/components/MarketLiveFeed";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const items = Array.from(document.querySelectorAll<HTMLElement>(".reveal-up"));
+
+    if (prefersReduced) {
+      items.forEach((it) => it.classList.add("is-visible"));
+      return;
+    }
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            el.classList.add("is-visible");
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    items.forEach((it) => obs.observe(it));
+
+    return () => obs.disconnect();
+  }, []);
   const featureTiles = [
     {
       title: "AUTHENTICITY CHAIN",
@@ -37,11 +66,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-surface">
-      <main className="flex-grow pt-[70px]">
+      <main className="relative flex-grow overflow-hidden pt-[70px]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.08),transparent_34%),radial-gradient(circle_at_bottom,rgba(217,70,239,0.06),transparent_28%)] opacity-70 animate-surface-drift" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_18%,rgba(255,255,255,0.04)_40%,transparent_62%)] opacity-25 animate-surface-scan" />
         {/* HERO SECTION */}
         <section
           id="home"
-          className="relative w-full h-[calc(100vh-80px)] min-h-[760px] flex items-center justify-center overflow-hidden"
+          className="relative w-full h-[calc(100vh-80px)] min-h-[760px] flex items-center justify-center overflow-hidden animate-surface-drift"
         >
           <HeroBannerSlideshow />
           <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
@@ -52,14 +83,14 @@ export default function Home() {
           </div>
           <div className="relative z-10 w-full max-w-[1440px] px-margin flex flex-col items-center text-center space-y-lg -translate-y-14 md:-translate-y-20 animate-hero-content-loop">
             <div className="flex flex-col items-center space-y-md reveal-up reveal-delay-1">
-              <span className="font-data-mono text-[10px] md:text-[11px] text-white/80 tracking-widest uppercase">
+              <span className="font-data-mono text-[10px] md:text-[11px] text-white/80 tracking-widest uppercase animate-pulse-glow">
                 I[WADE] Drop Set - 001/300, Multi-color]
               </span>
             </div>
             <h1 className="font-display-lg text-[52px] md:text-[68px] text-white leading-[1.08] tracking-tighter text-flow reveal-up reveal-delay-2 animate-glitch-hero">
               THE NEW ESSENTIALS DROP IS HERE
             </h1>
-            <p className="font-body-base text-[14px] md:text-[16px] text-white/90 max-w-2xl mx-auto tracking-[0.02em] reveal-up reveal-delay-3">
+            <p className="font-body-base text-[14px] md:text-[16px] text-white/90 max-w-2xl mx-auto tracking-[0.02em] reveal-up reveal-delay-3 animate-shimmer-wave">
               Exclusive, authenticated physical assets bridged to digital
               provenance. Secure your allocation before the vault seals.
             </p>
@@ -67,7 +98,7 @@ export default function Home() {
               <button className="relative overflow-hidden bg-primary-container/70 text-on-primary-container font-label-caps text-[14px] md:text-[15px] font-bold tracking-widest px-16 py-4 rounded-sm shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:shadow-[0_0_34px_rgba(250,204,21,0.85)] transition-all duration-300 flex items-center justify-center group">
                 <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
                 <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_10%,rgba(255,255,255,0.18)_38%,transparent_62%)] -translate-x-[120%] transition-transform duration-1000 group-hover:translate-x-[120%]" />
-                <span className="relative z-10 flex items-center">
+                <span className="relative z-10 flex items-center animate-button-glitch">
                   SHOP THE DROP NOW
                   <span className="material-symbols-outlined ml-1.5 text-[18px] transition-transform group-hover:translate-x-1">
                     arrow_forward
@@ -85,16 +116,26 @@ export default function Home() {
         {/* AUTHENTICATED ASSET PROTOCOL */}
         {/* ========================================= */}
 
-        <section className="mx-auto max-w-7xl px-6 py-28">
-          <h2 className="mb-14 text-center text-3xl font-bold tracking-tight text-white reveal-up">
+        <section className="relative mx-auto max-w-7xl overflow-hidden px-6 py-28">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.08),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(217,70,239,0.06),transparent_38%)] opacity-80 animate-surface-drift" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:84px_84px] opacity-20 animate-surface-grid" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_55%)] opacity-60 animate-surface-breathe" />
+          <div className="pointer-events-none absolute inset-x-6 top-10 h-px bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent animate-surface-scan" />
+          <div className="pointer-events-none absolute -left-20 top-24 h-64 w-64 rounded-full bg-cyan-400/10 blur-3xl animate-surface-orb" />
+          <div
+            className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl animate-surface-orb"
+            style={{ animationDelay: "-4s" }}
+          />
+
+          <h2 className="relative z-10 mb-14 text-center text-3xl font-bold tracking-tight text-white reveal-up animate-surface-breathe">
             AUTHENTICATED ASSET PROTOCOL
           </h2>
 
-          <div className="grid gap-px overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-400/20 to-transparent p-px md:grid-cols-2">
+          <div className="relative z-10 grid gap-px overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-400/20 to-transparent p-px md:grid-cols-2 animate-surface-frame">
             {featureTiles.map((item, i) => (
               <div
                 key={i}
-                className="group relative overflow-hidden bg-zinc-950 p-10 reveal-up"
+                className="group relative overflow-hidden bg-zinc-950 p-10 reveal-up animate-surface-card"
                 style={{ animationDelay: `${i * 120}ms` }}
               >
                 {item.image && (
@@ -129,10 +170,18 @@ export default function Home() {
         {/* COMMUNITY VERIFIED DROPS */}
         {/* ========================================= */}
 
-        <section className="overflow-hidden border-y border-zinc-800 bg-zinc-950/60 py-24">
+        <section className="relative overflow-hidden border-y border-zinc-800 bg-zinc-950/60 py-24">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.08),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(217,70,239,0.08),transparent_38%)] opacity-80 animate-surface-drift" />
+          <div className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-surface-orb" />
+          <div
+            className="pointer-events-none absolute -right-24 bottom-4 h-80 w-80 rounded-full bg-fuchsia-500/10 blur-3xl animate-surface-orb"
+            style={{ animationDelay: "-4s" }}
+          />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-surface-scan" />
+
           {/* ticker */}
 
-          <div className="mb-14 whitespace-nowrap overflow-hidden">
+          <div className="relative z-10 mb-14 whitespace-nowrap overflow-hidden">
             <div className="animate-marquee flex w-max gap-8 text-sm uppercase tracking-[0.3em] text-cyan-300/70">
               <span>{">"} USER 0x7A... BOUGHT VOID-TEE</span>
               <span>|</span>
@@ -152,7 +201,7 @@ export default function Home() {
 
           {/* masonry */}
 
-          <div className="mx-auto columns-1 gap-6 space-y-6 px-6 md:columns-2 lg:max-w-7xl lg:columns-3">
+          <div className="relative z-10 mx-auto columns-1 gap-6 space-y-6 px-6 md:columns-2 lg:max-w-7xl lg:columns-3">
             <div className="break-inside-avoid overflow-hidden rounded-3xl">
               <img
                 src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop"
@@ -186,12 +235,12 @@ export default function Home() {
         {/* ========================================= */}
 
         <section className="mx-auto max-w-7xl px-6 py-28">
-          <div className="grid overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950 md:grid-cols-2 reveal-up reveal-delay-2">
+          <div className="grid overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950 md:grid-cols-2 reveal-up reveal-delay-2 animate-surface-frame">
             <div className="relative min-h-[500px]">
               <img
                 src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop"
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover animate-hero-drift"
+                className="absolute inset-0 h-full w-full object-cover animate-surface-drift"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-transparent to-fuchsia-500/15" />
             </div>
@@ -231,12 +280,12 @@ export default function Home() {
         {/* ========================================= */}
 
         <section className="mx-auto flex max-w-5xl flex-col items-center px-6 py-32 text-center">
-          <h2 className="max-w-4xl text-5xl font-black uppercase tracking-tight text-white md:text-7xl reveal-up">
+          <h2 className="max-w-4xl text-5xl font-black uppercase tracking-tight text-white md:text-7xl reveal-up animate-surface-breathe">
             Reserve Your Allocated Supply
           </h2>
 
-          <div className="relative my-16 h-56 w-56 reveal-up reveal-delay-1">
-            <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-3xl animate-float-slow" />
+          <div className="relative my-16 h-56 w-56 reveal-up reveal-delay-1 animate-surface-card">
+            <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-3xl animate-surface-orb" />
 
             <img
               src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1000&auto=format&fit=crop"
@@ -252,7 +301,7 @@ export default function Home() {
             </span>
           </div>
 
-          <button className="group relative overflow-hidden rounded-xl border border-cyan-400/30 bg-cyan-300 px-14 py-6 text-sm font-black uppercase tracking-[0.3em] text-black transition hover:shadow-[0_0_50px_rgba(34,211,238,0.4)] reveal-up reveal-delay-3">
+          <button className="group relative overflow-hidden rounded-xl border border-cyan-400/30 bg-cyan-300 px-14 py-6 text-sm font-black uppercase tracking-[0.3em] text-black transition hover:shadow-[0_0_50px_rgba(34,211,238,0.4)] reveal-up reveal-delay-3 animate-surface-breathe">
             <span className="relative z-10 flex items-center gap-3">
               Reserve Now
               <span className="material-symbols-outlined text-[20px] transition group-hover:translate-x-1">

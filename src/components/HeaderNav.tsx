@@ -43,7 +43,7 @@ export default function HeaderNav() {
           : "home";
 
   return (
-    <header className="fixed top-0 z-50 w-full py-2 bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
+    <header className="fixed top-0 z-50 w-full py-2 bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_0_0_rgba(255,255,255,0.05)] animate-surface-frame">
       <div className="relative flex items-center px-margin py-4 w-full max-w-[1440px] mx-auto gap-10">
         <FuzzyText
           baseIntensity={0.18}
@@ -52,7 +52,7 @@ export default function HeaderNav() {
           fontSize="1.5rem"
           fontWeight={700}
           color="#00FFFF"
-          className="block shrink-0 leading-none"
+          className="block shrink-0 leading-none animate-surface-breathe"
         >
           MIDNIGHT STORE
         </FuzzyText>
