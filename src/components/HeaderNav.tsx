@@ -29,7 +29,7 @@ export default function HeaderNav() {
   const activeTab = pathname === "/products" ? "products" : activeHash === "market" ? "market" : "home";
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
+    <header className="fixed top-0 z-50 w-full py-2 bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
       <div className="relative flex items-center px-margin py-4 w-full max-w-[1440px] mx-auto gap-10">
         <FuzzyText
           baseIntensity={0.18}
@@ -48,7 +48,7 @@ export default function HeaderNav() {
 
             const tabClassName = `inline-flex items-center justify-center border px-4 py-2 font-label-caps text-label-caps tracking-[0.18em] transition-all duration-300 active:scale-95 ${
               isActive
-                ? "border-cyan-300/80 bg-gradient-to-b from-cyan-400/20 to-cyan-500/5 text-cyan-100 [text-shadow:0_0_14px_rgba(0,251,251,0.9)] shadow-[inset_0_0_0_1px_rgba(0,251,251,0.25),0_0_22px_rgba(0,251,251,0.35)]"
+                ? "border-cyan-300/80 bg-gradient-to-b from-cyan-400/20 to-cyan-500/5 text-cyan-100 [text-shadow:0_0_14px_rgba(0,251,251,0.9)] shadow-[inset_0_0_0_1px_rgba(0,251,251,0.25),0_0_22px_rgba(0,251,251,0.35)] animate-navbar-beep-slow"
                 : "border-fuchsia-300/20 bg-black/20 text-zinc-300 hover:border-cyan-300/60 hover:bg-cyan-500/10 hover:text-cyan-100 hover:[text-shadow:0_0_10px_rgba(0,251,251,0.7)]"
             }`;
 
@@ -71,6 +71,29 @@ export default function HeaderNav() {
           })}
         </nav>
       </div>
+      <style jsx global>{`
+        @keyframes navbar-beep-slow {
+          0% {
+            opacity: 1;
+          }
+          83.333% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+
+        .animate-navbar-beep-slow {
+          animation: navbar-beep-slow 1s linear infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-navbar-beep-slow {
+            animation: none;
+          }
+        }
+      `}</style>
     </header>
   );
 }

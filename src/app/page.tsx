@@ -65,7 +65,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-surface">
-      <main className="flex-grow pt-[80px]">
+      <main className="flex-grow pt-[70px]">
         {/* HERO SECTION */}
         <section
           id="home"
